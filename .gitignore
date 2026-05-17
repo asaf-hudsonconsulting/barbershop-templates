@@ -1,0 +1,17 @@
+# Local-only intake tool (per INTAKE_TOOL_SPEC.md — internal use, never deployed)
+tool/
+
+# Per-client persistence — contains private client data, never committed
+clients/
+
+# Node / build artifacts
+node_modules/
+.next/
+dist/
+out/
+*.log
+
+# OS / editor cruft
+.DS_Store
+.idea/
+.vscode/
