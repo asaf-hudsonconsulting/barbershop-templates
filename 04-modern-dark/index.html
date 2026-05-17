@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ============================================================
+     CONFIG
+     SHOP_NAME: "Method"
+     OWNER_FIRST_NAME: "Sasha"
+     NEIGHBORHOOD: "SoMa"
+     CITY: "San Francisco"  STATE: "CA"  ZIP: "94103"
+     ADDRESS: "228 Brannan St, Suite 12"
+     PHONE: "(415) 555-0188"
+     BOOKING_PLATFORM: "square"
+     SECTIONS = { nav, hero, services, about, gallery:false,
+                  team:true, testimonials:false, booking,
+                  google_map, instagram_feed:false, contact, footer }
+     ============================================================ -->
+
+<title>Method — Purpose-built for the perfect cut.</title>
+<meta name="description" content="A barbershop, purpose-built. Same barber, every visit. Forty-five minutes. Flat pricing. SoMa, San Francisco.">
+<meta name="geo.region" content="US-CA">
+<meta name="geo.placename" content="San Francisco">
+<meta name="theme-color" content="#080808">
+
+<meta property="og:title" content="Method — SoMa Barbershop">
+<meta property="og:description" content="Appointment-only. Forty-five minutes. One barber.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og-image.jpg">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23080808'/%3E%3Ccircle cx='16' cy='16' r='6' fill='none' stroke='%234FFFB0' stroke-width='2'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  "name": "Method",
+  "description": "Appointment-only barbershop in SoMa, San Francisco.",
+  "url": "https://method.sf",
+  "telephone": "(415) 555-0188",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "228 Brannan St, Suite 12",
+    "addressLocality": "San Francisco", "addressRegion": "CA",
+    "postalCode": "94103", "addressCountry": "US"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "20:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "17:00" }
+  ],
+  "priceRange": "$$$",
+  "image": "og-image.jpg"
+}
+</script>
+
+<style>
+:root {
+  --color-bg: #080808;
+  --color-surface: #1A1A1A;
+  --color-surface-2: #121212;
+  --color-border: #2A2A2A;
+  --color-text-primary: #E0E0E0;
+  --color-text-secondary: #9A9A9A;
+  --color-text-muted: #5A5A5A;
+  --color-accent: #4FFFB0;
+  --color-accent-hover: #6FFFC0;
+  --color-accent-soft: rgba(79, 255, 176, 0.12);
+
+  --text-xs: 0.64rem; --text-sm: 0.8rem; --text-base: 1rem;
+  --text-md: 1.25rem; --text-lg: 1.563rem; --text-xl: 1.953rem;
+  --text-2xl: 2.441rem; --text-3xl: 3.052rem; --text-4xl: 3.815rem;
+  --text-display: clamp(3rem, 8vw, 6.5rem);
+
+  --space-xs: 0.5rem; --space-sm: 1rem; --space-md: 2rem;
+  --space-lg: 4rem; --space-xl: 8rem; --space-2xl: 16rem;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 150ms; --duration-base: 300ms;
+  --duration-slow: 600ms; --duration-enter: 900ms;
+
+  --container-max: 1240px; --container-narrow: 720px;
+  --nav-height: 64px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+@media (min-width: 900px) { * { cursor: none; } }
+.cursor {
+  position: fixed; top: 0; left: 0;
+  width: 12px; height: 12px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 250ms var(--ease-out-expo), height 250ms var(--ease-out-expo);
+  mix-blend-mode: difference;
+}
+.cursor.hover { width: 44px; height: 44px; }
+.cursor.click { transform: translate(-50%, -50%) scale(0.7); transition-duration: 80ms; }
+@media (max-width: 899px) { .cursor { display: none; } }
+
+::selection { background: var(--color-accent); color: var(--color-bg); }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-accent); }
+
+h1, h2, h3, h4 { font-family: "Syne", "Inter", sans-serif; font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; }
+a { color: inherit; text-decoration: none; }
+.container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--space-md); }
+
+/* ==================== NAV ==================== */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-height);
+  background: rgba(8, 8, 8, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 100;
+  opacity: 0; transform: translateY(-8px);
+  animation: navIn 300ms var(--ease-out-expo) forwards;
+}
+@keyframes navIn { to { opacity: 1; transform: translateY(0); } }
+.nav-inner {
+  max-width: var(--container-max); margin: 0 auto; height: 100%;
+  padding: 0 var(--space-md);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.brand {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-family: "Syne", sans-serif; font-weight: 800;
+  font-size: 1.1rem; letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+}
+.brand-dot {
+  width: 22px; height: 22px;
+  border: 2px solid var(--color-accent);
+  border-radius: 50%;
+  position: relative;
+}
+.brand-dot::after {
+  content: ""; position: absolute;
+  top: 50%; left: 50%;
+  width: 6px; height: 6px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 12px var(--color-accent);
+}
+
+.nav-links { display: flex; gap: 0.4rem; list-style: none; align-items: center; }
+.nav-links a {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  transition: color var(--duration-base), background var(--duration-base);
+  position: relative;
+}
+.nav-links a:hover { color: var(--color-text-primary); background: var(--color-surface); }
+.nav-cta {
+  background: var(--color-accent);
+  color: var(--color-bg) !important;
+  font-weight: 600 !important;
+  padding: 0.5rem 1.1rem !important;
+  margin-left: 0.5rem;
+  transition: all 200ms var(--ease-out-expo) !important;
+}
+.nav-cta:hover { background: var(--color-accent-hover) !important; transform: translateY(-2px); box-shadow: 0 0 24px rgba(79,255,176,0.3); }
+
+.nav-toggle { display: none; background: none; border: 0; color: var(--color-text-primary); cursor: pointer; font-size: 1.4rem; }
+@media (max-width: 800px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
+  .nav-links.open {
+    display: flex; position: absolute;
+    top: var(--nav-height); left: 0; right: 0;
+    background: var(--color-bg);
+    flex-direction: column; padding: var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+    align-items: flex-start;
+  }
+}
+
+/* ==================== HERO ==================== */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: calc(var(--nav-height) + var(--space-lg)) 0 var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: ""; position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 40%, var(--color-accent-soft), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(79,255,176,0.05), transparent 60%);
+  pointer-events: none;
+}
+.hero::after {
+  content: ""; position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+
+.hero-inner { position: relative; z-index: 1; }
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 0.4rem 0.9rem;
+  border-radius: 99px;
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+  opacity: 0; animation: rise 900ms var(--ease-out-expo) 100ms forwards;
+}
+.hero-tag .live {
+  width: 8px; height: 8px; background: var(--color-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--color-accent);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 50% { opacity: 0.5; } }
+
+.hero h1 {
+  font-size: var(--text-display);
+  letter-spacing: -0.04em;
+  margin-bottom: var(--space-md);
+  max-width: 18ch;
+  opacity: 0; transform: translateY(24px);
+  animation: rise 900ms var(--ease-out-expo) 150ms forwards;
+}
+.hero h1 .grad {
+  background: linear-gradient(180deg, var(--color-text-primary) 30%, var(--color-text-muted));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero h1 .mint { color: var(--color-accent); }
+
+.hero-sub {
+  font-size: var(--text-md);
+  color: var(--color-text-secondary);
+  max-width: 50ch;
+  margin-bottom: var(--space-lg);
+  opacity: 0; transform: translateY(24px);
+  animation: rise 900ms var(--ease-out-expo) 300ms forwards;
+}
+
+.hero-ctas { display: flex; gap: var(--space-sm); opacity: 0; transform: translateY(24px); animation: rise 900ms var(--ease-out-expo) 450ms forwards; flex-wrap: wrap; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.85rem 1.4rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border: 1px solid var(--color-accent);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 200ms var(--ease-out-expo);
+}
+.btn:hover { background: var(--color-accent-hover); transform: translateY(-2px); box-shadow: 0 0 24px rgba(79,255,176,0.3); }
+.btn-ghost {
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+}
+.btn-ghost:hover { background: var(--color-surface-2); border-color: var(--color-accent); color: var(--color-accent); }
+.btn .arrow { transition: transform 200ms; }
+.btn:hover .arrow { transform: translateX(3px); }
+
+.hero-strip {
+  margin-top: var(--space-xl);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  opacity: 0; transform: translateY(24px);
+  animation: rise 900ms var(--ease-out-expo) 600ms forwards;
+}
+@media (max-width: 700px) { .hero-strip { grid-template-columns: repeat(2, 1fr); } }
+.hero-strip .k {
+  font-family: "Syne", sans-serif;
+  font-size: 1.6rem;
+  color: var(--color-accent);
+  letter-spacing: -0.02em;
+}
+.hero-strip .l {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+}
+
+@keyframes rise { to { opacity: 1; transform: translateY(0); } }
+
+/* ==================== SECTIONS ==================== */
+section { padding: var(--space-xl) 0; position: relative; }
+.section-head {
+  margin-bottom: var(--space-lg);
+  max-width: 720px;
+}
+.section-head .eyebrow {
+  font-family: "Inter", sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+.section-head h2 {
+  font-size: var(--text-2xl);
+  letter-spacing: -0.03em;
+}
+.section-head h2 .mint { color: var(--color-accent); }
+.section-head .lede {
+  color: var(--color-text-secondary);
+  margin-top: var(--space-sm);
+  font-size: var(--text-md);
+  max-width: 60ch;
+}
+
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 600ms var(--ease-out-expo), transform 600ms var(--ease-out-expo); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ==================== SERVICES ==================== */
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+@media (max-width: 700px) { .svc-grid { grid-template-columns: 1fr; } }
+.svc {
+  background: var(--color-bg);
+  padding: var(--space-md);
+  transition: background var(--duration-base);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.svc:hover { background: var(--color-surface); }
+.svc::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--color-accent);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--duration-base) var(--ease-out-expo);
+}
+.svc:hover::before { transform: scaleY(1); }
+.svc-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; }
+.svc h3 { font-size: 1.4rem; letter-spacing: -0.02em; }
+.svc .price { font-family: "Syne", sans-serif; font-weight: 700; font-size: 1.25rem; color: var(--color-accent); }
+.svc p { color: var(--color-text-secondary); font-size: 0.95rem; margin-bottom: 0.6rem; }
+.svc .meta {
+  display: inline-flex; gap: 0.6rem; align-items: center;
+  font-size: 0.78rem; color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+}
+.svc .meta span::before { content: "·"; margin-right: 0.6rem; }
+.svc .meta span:first-child::before { display: none; }
+
+/* ==================== ABOUT / SPLIT ==================== */
+.split {
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  gap: var(--space-lg);
+  align-items: center;
+}
+@media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
+.split-visual {
+  aspect-ratio: 4/5;
+  background:
+    radial-gradient(circle at 50% 30%, var(--color-accent-soft), transparent 60%),
+    linear-gradient(160deg, var(--color-surface), var(--color-bg));
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+}
+.split-visual::after {
+  content: "";
+  position: absolute;
+  inset: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background-image:
+    linear-gradient(rgba(79,255,176,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79,255,176,0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.split-visual .mark {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Syne", sans-serif; font-weight: 800;
+  font-size: clamp(4rem, 11vw, 8rem);
+  color: var(--color-accent);
+  z-index: 2;
+  letter-spacing: -0.04em;
+  filter: drop-shadow(0 0 30px rgba(79,255,176,0.3));
+}
+.split-text h2 { font-size: var(--text-2xl); margin-bottom: var(--space-md); letter-spacing: -0.03em; }
+.split-text h2 .mint { color: var(--color-accent); }
+.split-text p { color: var(--color-text-secondary); margin-bottom: var(--space-md); font-size: var(--text-md); }
+.split-text .bullet-list {
+  display: grid; gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+.split-text .bullet-list li {
+  list-style: none;
+  display: grid; grid-template-columns: auto 1fr; gap: var(--space-sm);
+  align-items: start;
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
+}
+.split-text .bullet-list .check {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; font-weight: 700;
+  margin-top: 0.2rem;
+}
+.split-text .bullet-list strong { display: block; color: var(--color-text-primary); margin-bottom: 0.15rem; }
+.split-text .bullet-list span { color: var(--color-text-secondary); font-size: 0.95rem; }
+
+/* ==================== TEAM ==================== */
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); }
+@media (max-width: 800px) { .team-grid { grid-template-columns: 1fr; } }
+.member {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: var(--space-md);
+  transition: transform var(--duration-base) var(--ease-out-expo), border-color var(--duration-base);
+  cursor: pointer;
+}
+.member:hover { transform: translateY(-3px); border-color: var(--color-accent); }
+.member .av {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-accent), #1A8A60);
+  display: flex; align-items: center; justify-content: center;
+  font-family: "Syne", sans-serif; font-weight: 700;
+  color: var(--color-bg);
+  font-size: 1.5rem;
+  margin-bottom: var(--space-sm);
+}
+.member h4 { font-size: 1.15rem; letter-spacing: -0.01em; }
+.member .role { color: var(--color-accent); font-size: 0.82rem; letter-spacing: 0.05em; margin-top: 0.2rem; text-transform: uppercase; font-weight: 500; }
+.member p { color: var(--color-text-secondary); font-size: 0.92rem; margin-top: var(--space-sm); }
+
+/* ==================== BOOKING ==================== */
+.book-band {
+  background:
+    radial-gradient(ellipse at 50% 0%, var(--color-accent-soft), transparent 60%),
+    var(--color-surface-2);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-xl) 0;
+  text-align: center;
+}
+.book-band h2 { font-size: var(--text-3xl); letter-spacing: -0.04em; margin-bottom: var(--space-md); }
+.book-band h2 .mint { color: var(--color-accent); }
+.book-band p { color: var(--color-text-secondary); max-width: 56ch; margin: 0 auto var(--space-lg); font-size: var(--text-md); }
+
+/* ==================== MAP ==================== */
+.map-wrap {
+  height: 420px;
+  background:
+    radial-gradient(circle at 50% 50%, var(--color-accent-soft), transparent 60%),
+    repeating-linear-gradient(0deg, transparent 0 39px, rgba(79,255,176,0.06) 40px),
+    repeating-linear-gradient(90deg, transparent 0 39px, rgba(79,255,176,0.06) 40px),
+    var(--color-surface-2);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+}
+.map-pin {
+  position: absolute; top: 50%; left: 50%;
+  width: 14px; height: 14px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px rgba(79,255,176,0.2), 0 0 24px var(--color-accent);
+  transform: translate(-50%, -50%);
+}
+.map-card {
+  position: absolute; bottom: var(--space-md); left: var(--space-md);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: var(--space-md);
+  max-width: 320px;
+  backdrop-filter: blur(8px);
+}
+.map-card strong { display: block; font-family: "Syne", sans-serif; font-size: 1.15rem; margin-bottom: 0.4rem; }
+.map-card a { color: var(--color-accent); font-size: 0.9rem; }
+
+/* ==================== CONTACT ==================== */
+.contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); }
+@media (max-width: 700px) { .contact-grid { grid-template-columns: 1fr; } }
+.contact-block h4 {
+  font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+}
+.contact-block ul { list-style: none; }
+.contact-block li {
+  display: flex; justify-content: space-between;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.95rem;
+}
+.contact-block li:last-child { border: 0; }
+.contact-block li .day { color: var(--color-text-muted); }
+.contact-block p { color: var(--color-text-secondary); font-size: 0.95rem; }
+.contact-block a { color: var(--color-accent); }
+
+/* ==================== FOOTER ==================== */
+footer.foot {
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-md) 0;
+  display: flex; justify-content: space-between; align-items: center;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+footer.foot .container { display: flex; justify-content: space-between; align-items: center; gap: var(--space-md); flex-wrap: wrap; }
+footer.foot strong { color: var(--color-text-primary); font-family: "Syne", sans-serif; font-weight: 700; }
+
+/* ==================== MODAL ==================== */
+.modal-back {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(8px);
+  display: none; align-items: center; justify-content: center;
+  z-index: 200; padding: var(--space-md);
+}
+.modal-back.open { display: flex; }
+.modal {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  max-width: 680px; width: 100%;
+  padding: var(--space-lg);
+  position: relative;
+}
+.modal h3 { font-size: 1.6rem; margin-bottom: var(--space-sm); letter-spacing: -0.02em; }
+.modal p { color: var(--color-text-secondary); margin-bottom: var(--space-md); font-size: 0.95rem; }
+.modal-close {
+  position: absolute; top: var(--space-sm); right: var(--space-sm);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  width: 32px; height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.modal .placeholder {
+  height: 320px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px dashed var(--color-border);
+  border-radius: 8px;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top"><span class="brand-dot"></span>Method</a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services">Pricing</a></li>
+        <li><a href="#about">How it works</a></li>
+        <li><a href="#team">Barbers</a></li>
+        <li><a href="#contact">Visit</a></li>
+        <li><a href="#book" class="nav-cta" data-book>Book →</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="container hero-inner">
+    <div class="hero-tag"><span class="live"></span> Booking the week of June 2</div>
+    <h1><span class="grad">A barbershop,</span><br><span class="mint">purpose-built.</span></h1>
+    <p class="hero-sub">Same barber, every visit. Forty-five minutes. Flat pricing. Designed for the way you actually book a haircut.</p>
+    <div class="hero-ctas">
+      <a href="#book" class="btn" data-book>Book a chair <span class="arrow">→</span></a>
+      <a href="#services" class="btn btn-ghost">See pricing</a>
+    </div>
+
+    <div class="hero-strip">
+      <div><div class="k">45 min</div><div class="l">Every appointment</div></div>
+      <div><div class="k">1:1</div><div class="l">Same barber, every visit</div></div>
+      <div><div class="k">$95</div><div class="l">Flat. No add-ons.</div></div>
+      <div><div class="k">Mon–Sat</div><div class="l">8a to 8p weekdays</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Pricing</div>
+      <h2>Six services. <span class="mint">One price each.</span></h2>
+      <p class="lede">Shaped by the way our clients actually book — same barber, same chair, same standing slot. Add-ons included in the time you book. Never charged extra.</p>
+    </div>
+    <div class="svc-grid reveal">
+      <article class="svc">
+        <div class="svc-head"><h3>The Method Cut</h3><span class="price">$95</span></div>
+        <p>Consultation, shampoo, scissor work, hot-towel finish. The standard appointment.</p>
+        <div class="meta"><span>45 min</span><span>All barbers</span></div>
+      </article>
+      <article class="svc">
+        <div class="svc-head"><h3>Cut + Beard</h3><span class="price">$115</span></div>
+        <p>Standard cut plus shears and razor work on the beard. Add ten minutes.</p>
+        <div class="meta"><span>55 min</span><span>All barbers</span></div>
+      </article>
+      <article class="svc">
+        <div class="svc-head"><h3>Straight Razor Shave</h3><span class="price">$85</span></div>
+        <p>Two hot towels, badger brush, single-blade pass. Quiet room. No phones at the chair.</p>
+        <div class="meta"><span>45 min</span><span>Sasha &amp; Jules</span></div>
+      </article>
+      <article class="svc">
+        <div class="svc-head"><h3>First Visit</h3><span class="price">$95</span></div>
+        <p>Same as Method Cut. We add a five-minute consult so we get the cut right the first time.</p>
+        <div class="meta"><span>55 min</span><span>Any available</span></div>
+      </article>
+      <article class="svc">
+        <div class="svc-head"><h3>Touch-Up</h3><span class="price">$55</span></div>
+        <p>Between full cuts. Necks, ears, sideburns, beard line. Twenty-five minutes, in and out.</p>
+        <div class="meta"><span>25 min</span><span>Existing clients</span></div>
+      </article>
+      <article class="svc">
+        <div class="svc-head"><h3>Color Touch</h3><span class="price">$130</span></div>
+        <p>Grays, accents, or full coverage. Booked as a 90-minute cut + color slot.</p>
+        <div class="meta"><span>90 min</span><span>Sasha only</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container split">
+    <div class="split-visual reveal"><div class="mark">M</div></div>
+    <div class="split-text reveal">
+      <div class="eyebrow" style="font-size:0.78rem;letter-spacing:0.2em;color:var(--color-accent);text-transform:uppercase;margin-bottom:0.5rem;font-weight:600">How it works</div>
+      <h2>Built for the way you <span class="mint">actually book</span>. Available today.</h2>
+      <p>Sasha left a thirteen-year salon career in 2021 to build a barbershop on first principles: one client, one barber, one standing slot every six weeks.</p>
+      <p>The result: less time on the small talk, more time on the cut. Lower no-show rate. Better hair. The kind of result you feel before you can describe.</p>
+      <ul class="bullet-list">
+        <li>
+          <div class="check">✓</div>
+          <div><strong>Purpose-built for repeat visits</strong><span>You book the person, not the slot. Same barber, every visit. Switch any time — most don't.</span></div>
+        </li>
+        <li>
+          <div class="check">✓</div>
+          <div><strong>Flat pricing. No upsell.</strong><span>$95 is $95. Color, beard, hot towel — all included in the time you book.</span></div>
+        </li>
+        <li>
+          <div class="check">✓</div>
+          <div><strong>Zero-config booking</strong><span>Pick a chair. Pick a time. We hold it. Reschedule yourself up to 24 hours out.</span></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">The bench</div>
+      <h2>Four barbers. <span class="mint">One calendar.</span></h2>
+      <p class="lede">Pick a name when you book. No preference yet? Choose "any" — we'll match you with whoever has the next 45-minute slot. Switch any time.</p>
+    </div>
+    <div class="team-grid reveal">
+      <article class="member">
+        <div class="av">S</div>
+        <h4>Sasha Ng</h4>
+        <div class="role">Owner / Master</div>
+        <p>Thirteen years at salons in Cole Valley and the Mission before Method opened.</p>
+      </article>
+      <article class="member">
+        <div class="av">J</div>
+        <h4>Jules Hartmann</h4>
+        <div class="role">Senior Barber</div>
+        <p>Eight years cutting in Berlin and SF. Books up first; book early.</p>
+      </article>
+      <article class="member">
+        <div class="av">T</div>
+        <h4>Tomás Vidal</h4>
+        <div class="role">Barber</div>
+        <p>Method's second hire. Tightest fades in the studio — book "any" if you want one.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="book-band" id="book">
+  <div class="container">
+    <h2>Book once. <span class="mint">Set it standing.</span></h2>
+    <p>Book one appointment. Make it recurring. Reschedule yourself any time. Calendar opens twelve weeks out. No fees for cancellations more than 24 hours out.</p>
+    <a href="#" class="btn" data-book>Open calendar <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<!-- MAP -->
+<div class="map-wrap" aria-label="Map placeholder">
+  <div class="map-pin"></div>
+  <div class="map-card">
+    <strong>Method</strong>
+    <span style="color:var(--color-text-secondary);font-size:0.92rem">228 Brannan St, Suite 12<br>San Francisco, CA 94103</span><br>
+    <a href="https://maps.google.com" target="_blank" rel="noopener" style="margin-top:0.6rem; display:inline-block">Directions →</a>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Visit</div>
+      <h2>Find <span class="mint">us</span>.</h2>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="contact-block">
+        <h4>Studio</h4>
+        <p>228 Brannan St, Suite 12<br>San Francisco, CA 94103</p>
+        <p style="margin-top:var(--space-sm)"><a href="tel:+14155550188">(415) 555-0188</a></p>
+        <p><a href="mailto:hello@method.sf">hello@method.sf</a></p>
+      </div>
+      <div class="contact-block">
+        <h4>Hours</h4>
+        <ul>
+          <li><span class="day">Mon – Fri</span><span>8 – 8</span></li>
+          <li><span class="day">Sat</span><span>9 – 5</span></li>
+          <li><span class="day">Sun</span><span>Closed</span></li>
+        </ul>
+      </div>
+      <div class="contact-block">
+        <h4>Notes</h4>
+        <p>Appointment only — no walk-ins.<br>Cancel free up to 24h before.<br>Suite 12 is second floor, code at the door.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="container">
+    <div><strong>Method</strong> · SoMa, SF · Since 2021</div>
+    <div>© 2025 Method Studio</div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-back" id="bookModal" role="dialog" aria-modal="true">
+  <div class="modal">
+    <button class="modal-close" onclick="closeBook()" aria-label="Close">×</button>
+    <h3>Book a chair</h3>
+    <p>Live calendar through Square Appointments. First-visit slots auto-add a five-minute consult. Reschedule yourself any time up to 24 hours out.</p>
+    <div class="placeholder">Square Appointments embed loads here</div>
+  </div>
+</div>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+let tx = 0, ty = 0, cx = 0, cy = 0;
+window.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
+function loop() {
+  cx += (tx - cx) * 0.25;
+  cy += (ty - cy) * 0.25;
+  cursor.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
+  requestAnimationFrame(loop);
+}
+loop();
+document.querySelectorAll('a, button, .svc, .member, .map-card').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+});
+document.addEventListener('mousedown', () => cursor.classList.add('click'));
+document.addEventListener('mouseup', () => cursor.classList.remove('click'));
+
+// Modal
+const modal = document.getElementById('bookModal');
+document.querySelectorAll('[data-book]').forEach(el => el.addEventListener('click', e => { e.preventDefault(); modal.classList.add('open'); }));
+function closeBook() { modal.classList.remove('open'); }
+modal.addEventListener('click', e => { if (e.target === modal) closeBook(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBook(); });
+
+// Reveals
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('in'), i * 80);
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

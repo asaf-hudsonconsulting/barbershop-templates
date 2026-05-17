@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ============================================================
+     CONFIG
+     SHOP_NAME: "Lou's Barbershop"
+     OWNER_FIRST_NAME: "Lou"
+     NEIGHBORHOOD: "Downtown Ferndale"
+     CITY: "Ferndale"  STATE: "MI"  ZIP: "48220"
+     ADDRESS: "211 W Nine Mile Rd"
+     PHONE: "(248) 555-0119"
+     BOOKING_PLATFORM: "phone_only"
+     SECTIONS = { nav, hero, services, about, gallery,
+                  team:true, testimonials:true, booking,
+                  google_map, instagram_feed:false, contact, footer }
+     ============================================================ -->
+
+<title>Lou's Barbershop — Ferndale, Michigan</title>
+<meta name="description" content="Three chairs on Nine Mile since 1956. Walk-ins welcome. Cash, card, and a story for every Tiger's season.">
+<meta name="geo.region" content="US-MI">
+<meta name="geo.placename" content="Ferndale">
+<meta name="theme-color" content="#1B3A2D">
+
+<meta property="og:title" content="Lou's Barbershop — Ferndale, MI">
+<meta property="og:description" content="Three chairs on Nine Mile since 1956.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og-image.jpg">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231B3A2D'/%3E%3Ccircle cx='16' cy='16' r='10' fill='%23F5E6C8'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' fill='%238B1A1A' text-anchor='middle' font-weight='bold'%3EL%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  "name": "Lou's Barbershop",
+  "description": "Family-run barbershop on Nine Mile in Ferndale, Michigan, since 1956.",
+  "url": "https://lousferndale.com",
+  "telephone": "(248) 555-0119",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "211 W Nine Mile Rd",
+    "addressLocality": "Ferndale", "addressRegion": "MI",
+    "postalCode": "48220", "addressCountry": "US"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "16:00" }
+  ],
+  "priceRange": "$",
+  "image": "og-image.jpg"
+}
+</script>
+
+<style>
+:root {
+  --color-bg: #F5E6C8;
+  --color-surface: #FDF5E2;
+  --color-border: #C8B68A;
+  --color-text-primary: #1B3A2D;
+  --color-text-secondary: #3A4A40;
+  --color-text-muted: #7A6F58;
+  --color-accent: #8B1A1A;
+  --color-accent-hover: #6F1414;
+  --color-green: #1B3A2D;
+  --color-cream: #F5E6C8;
+
+  --text-xs: 0.64rem; --text-sm: 0.8rem; --text-base: 1rem;
+  --text-md: 1.25rem; --text-lg: 1.563rem; --text-xl: 1.953rem;
+  --text-2xl: 2.441rem; --text-3xl: 3.052rem; --text-4xl: 3.815rem;
+  --text-display: clamp(3rem, 9vw, 7rem);
+
+  --space-xs: 0.5rem; --space-sm: 1rem; --space-md: 2rem;
+  --space-lg: 4rem; --space-xl: 8rem; --space-2xl: 16rem;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 150ms; --duration-base: 300ms;
+  --duration-slow: 600ms; --duration-enter: 900ms;
+
+  --container-max: 1200px; --container-narrow: 720px;
+  --nav-height: 72px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  background:
+    radial-gradient(circle at 10% 10%, rgba(139,26,26,0.04), transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(27,58,45,0.04), transparent 50%),
+    var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: "Lora", "Georgia", serif;
+  font-size: 1.1rem;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--color-accent); color: var(--color-cream); }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-accent); }
+
+h1, h2, h3, h4, .display {
+  font-family: "Abril Fatface", "Georgia", serif;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 1.05;
+}
+
+a { color: inherit; text-decoration: none; }
+.container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--space-md); }
+
+/* ==================== TOP BANNER ==================== */
+.tophat {
+  background: var(--color-green);
+  color: var(--color-cream);
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  font-family: "Abril Fatface", serif;
+  position: relative;
+  text-transform: uppercase;
+}
+.tophat::before, .tophat::after {
+  content: "★ ★ ★";
+  color: var(--color-accent);
+  margin: 0 1rem;
+  letter-spacing: 0.3em;
+}
+
+/* ==================== NAV ==================== */
+.nav {
+  background: var(--color-bg);
+  border-bottom: 3px solid var(--color-green);
+  height: var(--nav-height);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  opacity: 0; transform: translateY(-8px);
+  animation: navIn 300ms var(--ease-out-expo) forwards;
+}
+@keyframes navIn { to { opacity: 1; transform: translateY(0); } }
+.nav-inner {
+  max-width: var(--container-max); margin: 0 auto; height: 100%;
+  padding: 0 var(--space-md);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.brand { display: flex; align-items: center; gap: 0.75rem; }
+.brand .badge {
+  width: 44px; height: 44px;
+  background: var(--color-green);
+  border: 3px solid var(--color-accent);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--color-cream);
+  font-family: "Abril Fatface", serif;
+  font-size: 1.3rem;
+}
+.brand .bn {
+  font-family: "Abril Fatface", serif;
+  font-size: 1.5rem;
+  color: var(--color-green);
+}
+.brand .bn small { display: block; font-family: "Lora", serif; font-size: 0.7rem; letter-spacing: 0.3em; color: var(--color-accent); margin-top: -2px; text-transform: uppercase; }
+
+.nav-links { display: flex; gap: 1.75rem; list-style: none; align-items: center; }
+.nav-links a {
+  font-family: "Lora", serif;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  position: relative;
+  padding: 0.4rem 0;
+  transition: color var(--duration-base);
+  letter-spacing: 0.02em;
+}
+.nav-links a::after {
+  content: ""; position: absolute;
+  left: 0; bottom: -2px;
+  height: 2px; width: 0;
+  background: var(--color-accent);
+  transition: width var(--duration-base) var(--ease-out-expo);
+}
+.nav-links a:hover { color: var(--color-green); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  background: var(--color-accent);
+  color: var(--color-cream) !important;
+  padding: 0.55rem 1.2rem !important;
+  border: 2px solid var(--color-accent);
+  border-radius: 2px;
+  font-family: "Abril Fatface", serif;
+  letter-spacing: 0.05em;
+  transition: all 200ms var(--ease-out-expo);
+}
+.nav-cta::after { display: none; }
+.nav-cta:hover { background: var(--color-green); border-color: var(--color-green); transform: translateY(-2px); }
+
+.nav-toggle { display: none; background: none; border: 0; color: var(--color-green); cursor: pointer; font-size: 1.5rem; }
+@media (max-width: 800px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
+  .nav-links.open {
+    display: flex; position: absolute;
+    top: var(--nav-height); left: 0; right: 0;
+    background: var(--color-bg);
+    flex-direction: column; padding: var(--space-md);
+    border-bottom: 3px solid var(--color-green);
+    align-items: flex-start;
+  }
+}
+
+/* ==================== HERO ==================== */
+.hero {
+  padding: var(--space-xl) 0;
+  position: relative;
+  border-bottom: 3px double var(--color-green);
+  background:
+    repeating-linear-gradient(45deg, transparent 0 24px, rgba(27,58,45,0.025) 24px 25px),
+    var(--color-bg);
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-lg);
+  align-items: center;
+}
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: var(--color-green);
+  color: var(--color-cream);
+  padding: 0.4rem 1rem;
+  font-family: "Abril Fatface", serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-md);
+  opacity: 0; animation: rise 900ms var(--ease-out-expo) 100ms forwards;
+}
+.hero-eyebrow .star { color: var(--color-cream); }
+
+.hero h1 {
+  font-size: var(--text-display);
+  color: var(--color-green);
+  margin-bottom: var(--space-md);
+  opacity: 0; transform: translateY(24px);
+  animation: rise 900ms var(--ease-out-expo) 150ms forwards;
+}
+.hero h1 .red { color: var(--color-accent); }
+
+.hero-sub {
+  font-size: var(--text-md);
+  color: var(--color-text-secondary);
+  max-width: 44ch;
+  margin-bottom: var(--space-lg);
+  opacity: 0; transform: translateY(24px);
+  animation: rise 900ms var(--ease-out-expo) 300ms forwards;
+}
+
+.hero-ctas { display: flex; gap: var(--space-sm); flex-wrap: wrap; opacity: 0; transform: translateY(24px); animation: rise 900ms var(--ease-out-expo) 450ms forwards; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.9rem 1.7rem;
+  font-family: "Abril Fatface", serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.1em;
+  background: var(--color-accent);
+  color: var(--color-cream);
+  border: 3px solid var(--color-accent);
+  cursor: pointer;
+  transition: all 200ms var(--ease-out-expo);
+  text-transform: uppercase;
+}
+.btn:hover { background: var(--color-green); border-color: var(--color-green); transform: translateY(-2px); box-shadow: 4px 4px 0 var(--color-accent); }
+.btn-ghost { background: transparent; color: var(--color-green); border-color: var(--color-green); }
+.btn-ghost:hover { background: var(--color-green); color: var(--color-cream); box-shadow: 4px 4px 0 var(--color-accent); }
+
+/* Hero sign (vintage barber sign) */
+.hero-sign {
+  background: var(--color-green);
+  border: 4px solid var(--color-cream);
+  outline: 4px solid var(--color-green);
+  outline-offset: 0;
+  padding: var(--space-lg) var(--space-md);
+  position: relative;
+  text-align: center;
+  color: var(--color-cream);
+  box-shadow: 8px 8px 0 var(--color-accent);
+  opacity: 0; transform: scale(1.04);
+  animation: heroImg 1200ms var(--ease-out-expo) 250ms forwards;
+}
+.hero-sign::before {
+  content: "★";
+  position: absolute; top: 0.5rem; left: 0.5rem;
+  color: var(--color-accent); font-size: 1.5rem;
+}
+.hero-sign::after {
+  content: "★";
+  position: absolute; top: 0.5rem; right: 0.5rem;
+  color: var(--color-accent); font-size: 1.5rem;
+}
+.hero-sign .est {
+  font-family: "Lora", serif;
+  font-style: italic;
+  letter-spacing: 0.3em;
+  font-size: 0.85rem;
+  color: var(--color-cream);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+.hero-sign .big {
+  font-family: "Abril Fatface", serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  color: var(--color-cream);
+  line-height: 0.95;
+}
+.hero-sign .since {
+  font-family: "Abril Fatface", serif;
+  font-size: 4rem;
+  color: var(--color-accent);
+  display: block;
+  line-height: 1;
+  margin: 0.5rem 0;
+  text-shadow: 0 0 0 var(--color-cream);
+}
+.hero-sign .ribbon {
+  background: var(--color-accent);
+  color: var(--color-cream);
+  padding: 0.4rem;
+  margin: 0 -1.5rem;
+  font-family: "Abril Fatface", serif;
+  letter-spacing: 0.3em;
+  font-size: 1rem;
+}
+.hero-sign .pole-strip {
+  height: 14px;
+  margin: 0.75rem -0.5rem 0;
+  background: repeating-linear-gradient(135deg, var(--color-cream) 0 10px, var(--color-accent) 10px 20px, var(--color-green) 20px 30px);
+  border-top: 2px solid var(--color-cream);
+  border-bottom: 2px solid var(--color-cream);
+}
+
+@keyframes rise { to { opacity: 1; transform: translateY(0); } }
+@keyframes heroImg { to { opacity: 1; transform: scale(1); } }
+
+/* ==================== SECTIONS ==================== */
+section { padding: var(--space-xl) 0; position: relative; }
+
+.section-head {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+.section-head .eyebrow {
+  display: inline-block;
+  font-family: "Lora", serif;
+  font-style: italic;
+  color: var(--color-accent);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+.section-head .eyebrow::before, .section-head .eyebrow::after { content: "—"; margin: 0 0.8rem; color: var(--color-text-muted); }
+.section-head h2 {
+  font-size: var(--text-2xl);
+  color: var(--color-green);
+}
+.section-head h2 .red { color: var(--color-accent); }
+
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 600ms var(--ease-out-expo), transform 600ms var(--ease-out-expo); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ==================== SERVICES — Diner Menu ==================== */
+.menu-board {
+  background: var(--color-surface);
+  border: 4px solid var(--color-green);
+  padding: var(--space-lg);
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  box-shadow: 6px 6px 0 var(--color-accent);
+}
+.menu-board::before, .menu-board::after {
+  content: ""; position: absolute;
+  top: -16px; width: 24px; height: 24px;
+  background: var(--color-accent);
+  border: 3px solid var(--color-green);
+  border-radius: 50%;
+}
+.menu-board::before { left: var(--space-md); }
+.menu-board::after { right: var(--space-md); }
+.menu-board .marquee {
+  text-align: center;
+  font-family: "Abril Fatface", serif;
+  font-size: 1.6rem;
+  color: var(--color-accent);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  padding-bottom: var(--space-sm);
+  border-bottom: 2px dashed var(--color-border);
+  margin-bottom: var(--space-md);
+}
+.menu-row {
+  display: flex; align-items: baseline;
+  padding: 0.65rem 0;
+  font-size: 1.15rem;
+  gap: 0.75rem;
+}
+.menu-row .name { font-family: "Abril Fatface", serif; color: var(--color-green); font-size: 1.4rem; }
+.menu-row .dots {
+  flex: 1;
+  border-bottom: 3px dotted var(--color-border);
+  align-self: end; margin-bottom: 0.4rem;
+}
+.menu-row .price {
+  font-family: "Abril Fatface", serif;
+  color: var(--color-accent);
+  font-size: 1.6rem;
+}
+.menu-row .note {
+  display: block;
+  font-family: "Lora", serif;
+  font-style: italic;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.15rem;
+}
+.menu-fine {
+  text-align: center;
+  margin-top: var(--space-md);
+  font-style: italic;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  border-top: 2px dashed var(--color-border);
+  padding-top: var(--space-sm);
+}
+
+/* ==================== ABOUT ==================== */
+.about {
+  background: var(--color-green);
+  color: var(--color-cream);
+  padding: var(--space-xl) 0;
+  border-top: 4px solid var(--color-accent);
+  border-bottom: 4px solid var(--color-accent);
+}
+.about .section-head h2 { color: var(--color-cream); }
+.about .section-head h2 .red { color: var(--color-accent); }
+.about .section-head .eyebrow { color: var(--color-accent); }
+.about .section-head .eyebrow::before, .about .section-head .eyebrow::after { color: var(--color-cream); }
+
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); align-items: center; }
+@media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } }
+
+.about-text p { font-size: var(--text-md); margin-bottom: var(--space-md); color: rgba(245,230,200,0.92); }
+.about-text p:first-of-type::first-letter {
+  font-family: "Abril Fatface", serif;
+  color: var(--color-accent);
+  font-size: 5rem;
+  float: left;
+  line-height: 0.85;
+  margin-right: 0.6rem;
+  margin-top: 0.3rem;
+}
+
+.about-frame {
+  background: var(--color-cream);
+  border: 6px solid var(--color-cream);
+  outline: 4px solid var(--color-accent);
+  outline-offset: 0;
+  aspect-ratio: 4/5;
+  position: relative;
+  box-shadow: 8px 8px 0 var(--color-accent);
+}
+.about-frame::after {
+  content: "1956 — 2025";
+  position: absolute;
+  bottom: var(--space-md); left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-green);
+  color: var(--color-cream);
+  font-family: "Abril Fatface", serif;
+  letter-spacing: 0.2em;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.95rem;
+}
+.about-frame .inside {
+  width: 100%; height: 100%;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(139,26,26,0.1), transparent 60%),
+    repeating-linear-gradient(135deg, #EBD9B0 0 6px, #F5E6C8 6px 12px);
+}
+
+/* ==================== TEAM ==================== */
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); }
+@media (max-width: 800px) { .team-grid { grid-template-columns: 1fr; } }
+.barber {
+  background: var(--color-surface);
+  border: 3px solid var(--color-green);
+  text-align: center;
+  padding: var(--space-md);
+  transition: transform var(--duration-base) var(--ease-out-expo);
+  cursor: pointer;
+  position: relative;
+}
+.barber:hover { transform: translateY(-4px); box-shadow: 4px 4px 0 var(--color-accent); }
+.barber .badge-row {
+  display: flex; justify-content: center; gap: 0.4rem;
+  margin-bottom: var(--space-sm);
+}
+.barber .badge-row span { color: var(--color-accent); font-size: 0.9rem; }
+.barber .face {
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  margin: 0 auto var(--space-sm);
+  background:
+    radial-gradient(circle at 50% 40%, var(--color-cream), #DCC8A0);
+  border: 4px solid var(--color-accent);
+  display: flex; align-items: center; justify-content: center;
+  font-family: "Abril Fatface", serif;
+  font-size: 3rem;
+  color: var(--color-green);
+}
+.barber h4 { font-size: 1.6rem; color: var(--color-green); }
+.barber .since {
+  font-family: "Lora", serif;
+  font-style: italic;
+  color: var(--color-accent);
+  font-size: 0.95rem;
+  margin: 0.3rem 0;
+}
+.barber p { color: var(--color-text-secondary); font-size: 0.95rem; }
+
+/* ==================== TESTIMONIALS ==================== */
+.testimonials .t-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); }
+@media (max-width: 800px) { .testimonials .t-grid { grid-template-columns: 1fr; } }
+.t-card {
+  background: var(--color-surface);
+  border: 2px solid var(--color-green);
+  padding: var(--space-md);
+  position: relative;
+}
+.t-card .stars {
+  color: var(--color-accent);
+  font-size: 1.1rem;
+  letter-spacing: 0.3em;
+  margin-bottom: var(--space-sm);
+}
+.t-card blockquote {
+  font-family: "Lora", serif;
+  font-style: italic;
+  color: var(--color-green);
+  font-size: 1.05rem;
+  margin-bottom: var(--space-sm);
+}
+.t-card cite {
+  font-family: "Abril Fatface", serif;
+  font-style: normal;
+  color: var(--color-accent);
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+}
+
+/* ==================== GALLERY ==================== */
+.gal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-sm); }
+@media (max-width: 700px) { .gal-grid { grid-template-columns: repeat(2, 1fr); } }
+.polaroid {
+  background: var(--color-cream);
+  border: 1px solid var(--color-border);
+  padding: 0.6rem 0.6rem 2rem;
+  box-shadow: 2px 2px 0 var(--color-accent);
+  transition: transform 400ms var(--ease-spring);
+  position: relative;
+  cursor: pointer;
+}
+.polaroid:nth-child(2n) { transform: rotate(-1deg); }
+.polaroid:nth-child(3n) { transform: rotate(1.5deg); }
+.polaroid:hover { transform: rotate(0) scale(1.04); z-index: 5; box-shadow: 6px 6px 0 var(--color-accent); }
+.polaroid .pic {
+  aspect-ratio: 1/1;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(27,58,45,0.1), transparent 60%),
+    repeating-linear-gradient(135deg, #EBD9B0 0 4px, #F5E6C8 4px 8px);
+}
+.polaroid .cap {
+  text-align: center;
+  font-family: "Lora", serif;
+  font-style: italic;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+/* ==================== BOOKING ==================== */
+.book-band {
+  background: var(--color-accent);
+  color: var(--color-cream);
+  padding: var(--space-xl) 0;
+  text-align: center;
+  border-top: 4px solid var(--color-green);
+  border-bottom: 4px solid var(--color-green);
+  position: relative;
+}
+.book-band::before, .book-band::after {
+  content: "";
+  position: absolute; left: 0; right: 0;
+  height: 8px;
+  background: repeating-linear-gradient(90deg, var(--color-cream) 0 12px, var(--color-green) 12px 24px);
+}
+.book-band::before { top: 0; }
+.book-band::after { bottom: 0; }
+.book-band h2 { font-size: var(--text-3xl); margin-bottom: var(--space-md); color: var(--color-cream); }
+.book-band p { font-size: var(--text-md); max-width: 50ch; margin: 0 auto var(--space-lg); color: rgba(245,230,200,0.95); }
+.book-band .btn { background: var(--color-cream); color: var(--color-accent); border-color: var(--color-cream); }
+.book-band .btn:hover { background: var(--color-green); color: var(--color-cream); border-color: var(--color-green); box-shadow: 4px 4px 0 var(--color-cream); }
+
+.tel-big {
+  font-family: "Abril Fatface", serif;
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  color: var(--color-cream);
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: var(--space-md);
+}
+
+/* ==================== MAP ==================== */
+.map-wrap {
+  height: 380px;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(27,58,45,0.06), transparent 60%),
+    repeating-linear-gradient(0deg, transparent 0 39px, rgba(27,58,45,0.08) 40px),
+    repeating-linear-gradient(90deg, transparent 0 39px, rgba(27,58,45,0.08) 40px),
+    var(--color-surface);
+  position: relative;
+  border-top: 4px solid var(--color-green);
+  border-bottom: 4px solid var(--color-green);
+}
+.map-pin {
+  position: absolute; top: 50%; left: 50%;
+  width: 20px; height: 20px;
+  background: var(--color-accent);
+  border: 4px solid var(--color-cream);
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px var(--color-green);
+  transform: translate(-50%, -50%);
+}
+.map-card {
+  position: absolute; bottom: var(--space-md); left: var(--space-md);
+  background: var(--color-cream);
+  border: 3px solid var(--color-green);
+  padding: var(--space-md);
+  max-width: 320px;
+  box-shadow: 4px 4px 0 var(--color-accent);
+}
+.map-card strong { display: block; font-family: "Abril Fatface", serif; font-size: 1.3rem; color: var(--color-green); margin-bottom: 0.4rem; }
+
+/* ==================== CONTACT ==================== */
+.contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); }
+@media (max-width: 700px) { .contact-grid { grid-template-columns: 1fr; } }
+.contact-block h4 {
+  font-size: 1.6rem;
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+}
+.contact-block ul { list-style: none; }
+.contact-block li {
+  display: flex; justify-content: space-between;
+  padding: 0.4rem 0;
+  border-bottom: 2px dotted var(--color-border);
+}
+.contact-block li:last-child { border: 0; }
+.contact-block .day { color: var(--color-text-muted); font-style: italic; }
+
+/* ==================== FOOTER ==================== */
+footer.foot {
+  background: var(--color-green);
+  color: var(--color-cream);
+  padding: var(--space-md) 0;
+  text-align: center;
+  border-top: 4px solid var(--color-accent);
+}
+footer.foot .brand { font-family: "Abril Fatface", serif; font-size: 1.6rem; color: var(--color-cream); }
+footer.foot .sub { color: var(--color-cream); font-style: italic; font-size: 0.9rem; margin-top: 0.3rem; opacity: 0.85; }
+footer.foot .pole-strip {
+  height: 12px;
+  margin: var(--space-md) 0 0;
+  background: repeating-linear-gradient(135deg, var(--color-cream) 0 10px, var(--color-accent) 10px 20px, var(--color-green) 20px 30px);
+  border-top: 2px solid var(--color-cream);
+  border-bottom: 2px solid var(--color-cream);
+}
+
+/* ==================== MODAL ==================== */
+.modal-back {
+  position: fixed; inset: 0;
+  background: rgba(27,58,45,0.92);
+  display: none; align-items: center; justify-content: center;
+  z-index: 200; padding: var(--space-md);
+}
+.modal-back.open { display: flex; }
+.modal {
+  background: var(--color-cream);
+  border: 4px solid var(--color-green);
+  outline: 4px solid var(--color-accent);
+  outline-offset: 0;
+  max-width: 600px; width: 100%;
+  padding: var(--space-lg);
+  position: relative;
+  text-align: center;
+  box-shadow: 8px 8px 0 var(--color-accent);
+}
+.modal h3 { font-family: "Abril Fatface", serif; font-size: 2.5rem; color: var(--color-green); margin-bottom: var(--space-sm); }
+.modal p { color: var(--color-text-secondary); margin-bottom: var(--space-md); }
+.modal-close {
+  position: absolute; top: var(--space-sm); right: var(--space-sm);
+  background: var(--color-accent); color: var(--color-cream);
+  border: 0; width: 36px; height: 36px;
+  cursor: pointer; font-size: 1.4rem;
+  font-family: "Abril Fatface", serif;
+}
+.modal a.call {
+  display: inline-block;
+  font-family: "Abril Fatface", serif;
+  font-size: 2.5rem;
+  background: var(--color-green);
+  color: var(--color-cream);
+  padding: 0.5rem 2rem;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  margin-top: var(--space-sm);
+  transition: all 200ms var(--ease-out-expo);
+}
+.modal a.call:hover { background: var(--color-accent); transform: translateY(-2px); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="tophat">Walk-Ins Welcome &middot; Cash, Card &middot; Closed Sundays &amp; Mondays</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <span class="badge">L</span>
+      <span class="bn">Lou's<small>Barbershop · 1956</small></span>
+    </a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services">Menu</a></li>
+        <li><a href="#about">The Story</a></li>
+        <li><a href="#team">The Boys</a></li>
+        <li><a href="#gallery">Photos</a></li>
+        <li><a href="#contact">Visit</a></li>
+        <li><a href="#book" class="nav-cta" data-book>Call Us</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">≡</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="container hero-grid">
+    <div>
+      <div class="hero-eyebrow"><span class="star">★</span> Nine Mile, Ferndale <span class="star">★</span></div>
+      <h1>Three chairs. One <span class="red">family.</span> Sixty-nine years.</h1>
+      <p class="hero-sub">Lou opened on a Monday in 1956 with a borrowed chair and a Detroit Tigers radio. His grandson runs the shop now. The radio still works.</p>
+      <div class="hero-ctas">
+        <a href="#book" class="btn" data-book>Call the Shop</a>
+        <a href="#services" class="btn btn-ghost">See the Menu</a>
+      </div>
+    </div>
+    <div class="hero-sign">
+      <div class="est">Established</div>
+      <div class="big">LOU'S</div>
+      <div class="big" style="font-size: clamp(1.5rem, 5vw, 3rem)">BARBERSHOP</div>
+      <div class="ribbon">FERNDALE · MICH.</div>
+      <div class="since">★ 1956 ★</div>
+      <div style="font-family:Lora,serif; font-style:italic; font-size:0.95rem; letter-spacing:0.15em; text-transform:uppercase;">Cuts · Shaves · Stories</div>
+      <div class="pole-strip"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Today's Menu</div>
+      <h2>What Lou's <span class="red">does</span></h2>
+    </div>
+    <div class="menu-board reveal">
+      <div class="marquee">★ ★ ★ Specials ★ ★ ★</div>
+      <div class="menu-row">
+        <div>
+          <span class="name">Haircut</span>
+          <span class="note">includes neck shave &amp; a once-over with the talc</span>
+        </div>
+        <span class="dots"></span><span class="price">$22</span>
+      </div>
+      <div class="menu-row">
+        <div>
+          <span class="name">Kid's Cut</span>
+          <span class="note">under twelve, includes a sucker on the way out</span>
+        </div>
+        <span class="dots"></span><span class="price">$18</span>
+      </div>
+      <div class="menu-row">
+        <div>
+          <span class="name">Beard Trim</span>
+          <span class="note">shears &amp; razor, with a hot towel</span>
+        </div>
+        <span class="dots"></span><span class="price">$15</span>
+      </div>
+      <div class="menu-row">
+        <div>
+          <span class="name">Hot Lather Shave</span>
+          <span class="note">straight razor, two towels, mustache wax if you want it</span>
+        </div>
+        <span class="dots"></span><span class="price">$30</span>
+      </div>
+      <div class="menu-row">
+        <div>
+          <span class="name">Cut &amp; Shave</span>
+          <span class="note">the Saturday special since 1962</span>
+        </div>
+        <span class="dots"></span><span class="price">$45</span>
+      </div>
+      <div class="menu-row">
+        <div>
+          <span class="name">Senior's Cut (65+)</span>
+          <span class="note">same cut, Lou's pricing</span>
+        </div>
+        <span class="dots"></span><span class="price">$18</span>
+      </div>
+      <p class="menu-fine">Prices haven't moved much. Tips go in the jar. Cash, card, and old-school IOUs welcome.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">The Story</div>
+      <h2>Three generations on <span class="red">Nine Mile</span></h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>Lou Domanski opened the shop in March 1956 with a chair he carried in from his uncle's place in Hamtramck. The lease was $42 a month. The Tigers were three weeks from opening day.</p>
+        <p>Lou cut hair every Tuesday through Saturday for forty-six years. His son took over in 2002. His grandson Anthony bought it in 2019. Anthony kept the radio, the chair, and the Detroit pennants on the wall.</p>
+        <p>Mr. Kowalski has been coming in every other Wednesday since 1971. We still cut his hair the same way Lou did — short on the sides, longer on top, parted on the left. Same combs, mostly. Same talc.</p>
+      </div>
+      <div class="about-frame reveal"><div class="inside"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Behind the Chair</div>
+      <h2>The <span class="red">boys</span></h2>
+    </div>
+    <div class="team-grid reveal">
+      <article class="barber">
+        <div class="badge-row"><span>★</span><span>★</span><span>★</span></div>
+        <div class="face">A</div>
+        <h4>Anthony Domanski</h4>
+        <div class="since">— Lou's grandson · Chair 1 —</div>
+        <p>Took over in 2019. Cuts the same Saturday list his grandfather did.</p>
+      </article>
+      <article class="barber">
+        <div class="badge-row"><span>★</span><span>★</span></div>
+        <div class="face">R</div>
+        <h4>Ray Calabrese</h4>
+        <div class="since">— Since 2008 · Chair 2 —</div>
+        <p>Hot-lather shave expert. Most Saturday morning regulars.</p>
+      </article>
+      <article class="barber">
+        <div class="badge-row"><span>★</span></div>
+        <div class="face">M</div>
+        <h4>Marco Hassan</h4>
+        <div class="since">— Since 2022 · Chair 3 —</div>
+        <p>Apprenticed under Anthony. Walk-ins find him on Thursdays.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" style="background: var(--color-surface)">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Around Town</div>
+      <h2>What folks <span class="red">say</span></h2>
+    </div>
+    <div class="t-grid reveal">
+      <article class="t-card">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <blockquote>"My grandfather brought my father here. My father brought me. I just brought my son in for his first cut."</blockquote>
+        <cite>— Joe K., Royal Oak</cite>
+      </article>
+      <article class="t-card">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <blockquote>"Anthony cuts hair the way his grandfather did and the radio is always on the Tigers game. What else do you need."</blockquote>
+        <cite>— Tom W., Pleasant Ridge</cite>
+      </article>
+      <article class="t-card">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <blockquote>"They saved my son's curl from his first cut in a little baggie. He's nineteen now. We still have it."</blockquote>
+        <cite>— Maria S., Ferndale</cite>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">From the Wall</div>
+      <h2>A few <span class="red">snapshots</span></h2>
+    </div>
+    <div class="gal-grid reveal">
+      <div class="polaroid"><div class="pic"></div><div class="cap">Lou, opening day '56</div></div>
+      <div class="polaroid"><div class="pic"></div><div class="cap">The Tigers, '68</div></div>
+      <div class="polaroid"><div class="pic"></div><div class="cap">Anthony, age 8</div></div>
+      <div class="polaroid"><div class="pic"></div><div class="cap">Saturday at noon</div></div>
+      <div class="polaroid"><div class="pic"></div><div class="cap">Chair 1, original</div></div>
+      <div class="polaroid"><div class="pic"></div><div class="cap">The big freeze, '94</div></div>
+      <div class="polaroid"><div class="pic"></div><div class="cap">Mr. K's 50th cut</div></div>
+      <div class="polaroid"><div class="pic"></div><div class="cap">The new sign, '19</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="book-band" id="book">
+  <div class="container">
+    <h2>Give the shop a call.</h2>
+    <p>No online booking — Anthony picks up between cuts. Walk in if you'd rather; we'll get you in.</p>
+    <a href="tel:+12485550119" class="tel-big">(248) 555-0119</a>
+    <a href="tel:+12485550119" class="btn">★ Call Now ★</a>
+  </div>
+</section>
+
+<!-- MAP -->
+<div class="map-wrap" aria-label="Map placeholder">
+  <div class="map-pin"></div>
+  <div class="map-card">
+    <strong>Lou's Barbershop</strong>
+    211 W Nine Mile Rd<br>Ferndale, MI 48220
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Find the Shop</div>
+      <h2>How to <span class="red">visit</span></h2>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="contact-block">
+        <h4>The Shop</h4>
+        <p>211 W Nine Mile Rd<br>Ferndale, MI 48220</p>
+        <p style="margin-top:var(--space-sm)"><a href="tel:+12485550119" style="color:var(--color-accent); font-family:'Abril Fatface',serif; font-size:1.3rem">(248) 555-0119</a></p>
+      </div>
+      <div class="contact-block">
+        <h4>Hours</h4>
+        <ul>
+          <li><span class="day">Sun – Mon</span><span>Closed</span></li>
+          <li><span class="day">Tue – Fri</span><span>8 – 6</span></li>
+          <li><span class="day">Saturday</span><span>8 – 4</span></li>
+        </ul>
+      </div>
+      <div class="contact-block">
+        <h4>Good to Know</h4>
+        <p style="font-style:italic; color:var(--color-text-secondary)">Free parking out back. Walk-ins anytime. The Tigers game is always on — don't ask us to turn it down.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="container">
+    <span class="brand">★ Lou's Barbershop ★</span>
+    <div class="sub">Cutting hair on Nine Mile since 1956 — Detroit raised, family run.</div>
+    <div class="pole-strip"></div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-back" id="bookModal" role="dialog" aria-modal="true">
+  <div class="modal">
+    <button class="modal-close" onclick="closeBook()" aria-label="Close">×</button>
+    <h3>Give Us a Ring</h3>
+    <p>We do this the old-fashioned way. Anthony or Ray will pick up — say what you're after and when you'd like to come in.</p>
+    <a href="tel:+12485550119" class="call">★ (248) 555-0119 ★</a>
+    <p style="margin-top:var(--space-md); font-style:italic; color:var(--color-text-muted)">Or walk in anytime we're open. We've got a chair.</p>
+  </div>
+</div>
+
+<script>
+const modal = document.getElementById('bookModal');
+document.querySelectorAll('[data-book]').forEach(el => el.addEventListener('click', e => { e.preventDefault(); modal.classList.add('open'); }));
+function closeBook() { modal.classList.remove('open'); }
+modal.addEventListener('click', e => { if (e.target === modal) closeBook(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBook(); });
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('in'), i * 80);
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

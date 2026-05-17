@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barbershop Press — Template Gallery</title>
+<meta name="description" content="Internal preview gallery for the six barbershop website templates.">
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --surface: #181818;
+    --border: #2a2a2a;
+    --text: #f1eee7;
+    --muted: #8a8580;
+    --accent: #c9a84c;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 4rem 2rem;
+  }
+  ::selection { background: var(--accent); color: var(--bg); }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  header { margin-bottom: 4rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
+  .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 1rem;
+  }
+  .lede { color: var(--muted); max-width: 60ch; font-size: 1.1rem; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.25rem;
+  }
+  .card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    transition: transform 200ms ease, border-color 200ms ease;
+  }
+  .card:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .num {
+    font-family: ui-monospace, monospace;
+    font-size: 0.8rem;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .card p { color: var(--muted); font-size: 0.95rem; }
+  .swatches {
+    display: flex;
+    gap: 0.4rem;
+    margin-top: 1.5rem;
+  }
+  .swatch {
+    width: 28px; height: 28px;
+    border: 1px solid var(--border);
+  }
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="eyebrow">Barbershop Press — Internal</div>
+      <h1>Template Gallery</h1>
+      <p class="lede">Six self-contained templates. Each previews with placeholder copy at the demo route — swap in client intake data to ship.</p>
+    </header>
+
+    <section class="grid">
+      <a class="card" href="./01-classic-luxury/">
+        <div class="num">01</div>
+        <h2>Classic Luxury</h2>
+        <p>Upscale hotel barbershop. Quiet authority. Clients tip well here.</p>
+        <div class="swatches">
+          <div class="swatch" style="background:#0A0A0A"></div>
+          <div class="swatch" style="background:#C9A84C"></div>
+          <div class="swatch" style="background:#F5F0E8"></div>
+        </div>
+      </a>
+
+      <a class="card" href="./02-street-urban/">
+        <div class="num">02</div>
+        <h2>Street &amp; Urban</h2>
+        <p>Culture-forward. The barber has 40K Instagram followers.</p>
+        <div class="swatches">
+          <div class="swatch" style="background:#111111"></div>
+          <div class="swatch" style="background:#FF3B00"></div>
+          <div class="swatch" style="background:#FFFFFF"></div>
+        </div>
+      </a>
+
+      <a class="card" href="./03-neighborhood/">
+        <div class="num">03</div>
+        <h2>Neighborhood Institution</h2>
+        <p>Been here 20 years. Your dad went here. The TV is always on ESPN.</p>
+        <div class="swatches">
+          <div class="swatch" style="background:#2C3E50"></div>
+          <div class="swatch" style="background:#E8DCC8"></div>
+          <div class="swatch" style="background:#8B4513"></div>
+        </div>
+      </a>
+
+      <a class="card" href="./04-modern-dark/">
+        <div class="num">04</div>
+        <h2>Modern Dark</h2>
+        <p>Could be in a tech campus or a boutique hotel lobby.</p>
+        <div class="swatches">
+          <div class="swatch" style="background:#080808"></div>
+          <div class="swatch" style="background:#1A1A1A"></div>
+          <div class="swatch" style="background:#4FFFB0"></div>
+        </div>
+      </a>
+
+      <a class="card" href="./05-editorial/">
+        <div class="num">05</div>
+        <h2>Editorial</h2>
+        <p>GQ ran a profile on this place. The owner has been on a podcast.</p>
+        <div class="swatches">
+          <div class="swatch" style="background:#F7F3EE"></div>
+          <div class="swatch" style="background:#1C1C1C"></div>
+          <div class="swatch" style="background:#C41E3A"></div>
+        </div>
+      </a>
+
+      <a class="card" href="./06-vintage-americana/">
+        <div class="num">06</div>
+        <h2>Vintage Americana</h2>
+        <p>Barber pole out front. American flag inside. Cash only (but we add card).</p>
+        <div class="swatches">
+          <div class="swatch" style="background:#1B3A2D"></div>
+          <div class="swatch" style="background:#F5E6C8"></div>
+          <div class="swatch" style="background:#8B1A1A"></div>
+        </div>
+      </a>
+    </section>
+
+    <footer>
+      Per CLAUDE.md — clients never touch this tool. Demo content uses placeholder shop names.
+    </footer>
+  </div>
+</body>
+</html>

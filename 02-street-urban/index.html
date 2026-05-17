@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ============================================================
+     CONFIG — Swap per client intake.json
+     SHOP_NAME: "Blade & Bro"
+     OWNER_FIRST_NAME: "Dre"
+     NEIGHBORHOOD: "Wynwood"
+     CITY: "Miami"  STATE: "FL"  ZIP: "33127"
+     ADDRESS: "2417 NW 2nd Ave"
+     PHONE: "(305) 555-0411"
+     BOOKING_PLATFORM: "booksy"
+     BOOKING_URL: "https://booksy.com/example"
+     SECTIONS = { nav, hero, services, about, gallery,
+                  team:true, testimonials:false, booking,
+                  google_map, instagram_feed:true, contact, footer }
+     ============================================================ -->
+
+<title>blade &amp; bro / wynwood</title>
+<meta name="description" content="fades. shaves. shop. wynwood. open late. walk in.">
+<meta name="geo.region" content="US-FL">
+<meta name="geo.placename" content="Miami">
+<meta name="theme-color" content="#111111">
+
+<meta property="og:title" content="blade &amp; bro / wynwood">
+<meta property="og:description" content="fades. shaves. shop. wynwood. open late.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og-image.jpg">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111111'/%3E%3Crect x='6' y='6' width='20' height='20' fill='%23FF3B00'/%3E%3Ctext x='16' y='22' font-family='Impact,sans-serif' font-size='16' fill='%23111111' text-anchor='middle' font-weight='900'%3EB%26B%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  "name": "Blade & Bro",
+  "description": "Wynwood barbershop. Fades, beard sculpts, after-hours cuts.",
+  "url": "https://bladebro.miami",
+  "telephone": "(305) 555-0411",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "2417 NW 2nd Ave",
+    "addressLocality": "Miami", "addressRegion": "FL",
+    "postalCode": "33127", "addressCountry": "US"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday"], "opens": "11:00", "closes": "21:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "11:00", "closes": "23:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "12:00", "closes": "18:00" }
+  ],
+  "priceRange": "$$",
+  "image": "og-image.jpg"
+}
+</script>
+
+<style>
+:root {
+  --color-bg: #111111;
+  --color-surface: #0a0a0a;
+  --color-border: #2a2a2a;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #b8b8b8;
+  --color-text-muted: #6a6a6a;
+  --color-accent: #FF3B00;
+  --color-accent-hover: #ff5a26;
+
+  --text-xs: 0.64rem; --text-sm: 0.8rem; --text-base: 1rem;
+  --text-md: 1.25rem; --text-lg: 1.563rem; --text-xl: 1.953rem;
+  --text-2xl: 2.441rem; --text-3xl: 3.052rem; --text-4xl: 3.815rem;
+  --text-display: clamp(4rem, 14vw, 11rem);
+
+  --space-xs: 0.5rem; --space-sm: 1rem; --space-md: 2rem;
+  --space-lg: 4rem; --space-xl: 8rem; --space-2xl: 16rem;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 150ms; --duration-base: 300ms;
+  --duration-slow: 600ms; --duration-enter: 900ms;
+
+  --container-max: 1280px; --container-narrow: 760px;
+  --nav-height: 72px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  overflow-x: hidden;
+}
+
+@media (min-width: 900px) {
+  * { cursor: none; }
+}
+.cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 18px; height: 18px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 200ms var(--ease-out-expo), height 200ms var(--ease-out-expo), background 200ms;
+  mix-blend-mode: difference;
+}
+.cursor.hover { width: 60px; height: 60px; }
+.cursor.click { transform: translate(-50%, -50%) scale(0.6); transition-duration: 80ms; }
+@media (max-width: 899px) { .cursor { display: none; } }
+
+::selection { background: var(--color-accent); color: var(--color-bg); }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-accent); }
+
+h1, h2, h3, h4, .display { font-family: "Bebas Neue", Impact, sans-serif; font-weight: 400; letter-spacing: 0.01em; line-height: 0.95; }
+
+a { color: inherit; text-decoration: none; }
+.container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--space-md); }
+
+/* ==================== TICKER ==================== */
+.ticker {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  padding: 0.5rem 0;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.25em;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+}
+.ticker-track {
+  display: inline-flex;
+  gap: 3rem;
+  animation: tick 25s linear infinite;
+  padding-left: 3rem;
+}
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ==================== NAV ==================== */
+.nav {
+  position: fixed;
+  top: 33px; left: 0; right: 0;
+  height: var(--nav-height);
+  background: rgba(17,17,17,0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 100;
+  opacity: 0; transform: translateY(-8px);
+  animation: navIn 300ms var(--ease-out-expo) forwards;
+}
+@keyframes navIn { to { opacity: 1; transform: translateY(0); } }
+
+.nav-inner {
+  max-width: var(--container-max); margin: 0 auto; height: 100%;
+  padding: 0 var(--space-md);
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.brand {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.8rem; letter-spacing: 0.04em;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.brand .dot { width: 12px; height: 12px; background: var(--color-accent); border-radius: 50%; }
+
+.nav-links {
+  display: flex; gap: var(--space-md); list-style: none; align-items: center;
+}
+.nav-links a {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.18em;
+  color: var(--color-text-secondary);
+  position: relative;
+  padding: 0.4rem 0;
+  transition: color var(--duration-base);
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  height: 2px; width: 0;
+  background: var(--color-accent);
+  transition: width var(--duration-base) var(--ease-out-expo);
+}
+.nav-links a:hover { color: var(--color-text-primary); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  background: var(--color-accent);
+  color: var(--color-bg) !important;
+  padding: 0.7rem 1.4rem !important;
+  transition: all 200ms var(--ease-out-expo);
+}
+.nav-cta::after { display: none; }
+.nav-cta:hover { background: var(--color-text-primary); color: var(--color-bg) !important; transform: translateY(-2px); }
+
+.nav-toggle { display: none; background: none; border: 0; color: var(--color-text-primary); cursor: pointer; font-size: 1.5rem; }
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
+  .nav-links.open {
+    display: flex; position: absolute;
+    top: var(--nav-height); left: 0; right: 0;
+    background: var(--color-bg);
+    flex-direction: column; padding: var(--space-md);
+    align-items: flex-start;
+    border-bottom: 1px solid var(--color-border);
+  }
+}
+
+/* ==================== HERO ==================== */
+.hero {
+  padding: calc(33px + var(--nav-height) + var(--space-lg)) 0 var(--space-lg);
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative;
+}
+.hero-eyebrow {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1rem; letter-spacing: 0.4em;
+  color: var(--color-accent);
+  margin-bottom: var(--space-md);
+  opacity: 0; animation: rise 900ms var(--ease-out-expo) 150ms forwards;
+}
+.hero h1 {
+  font-size: var(--text-display);
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  opacity: 0; transform: translateY(24px);
+  animation: rise 900ms var(--ease-out-expo) 150ms forwards;
+}
+.hero h1 .slash { color: var(--color-accent); }
+.hero h1 .stroke {
+  -webkit-text-stroke: 2px var(--color-text-primary);
+  color: transparent;
+}
+.hero-sub {
+  max-width: 50ch;
+  font-size: var(--text-md);
+  color: var(--color-text-secondary);
+  margin: var(--space-md) 0 var(--space-lg);
+  opacity: 0; transform: translateY(24px);
+  animation: rise 900ms var(--ease-out-expo) 300ms forwards;
+}
+.hero-ctas { display: flex; gap: var(--space-sm); flex-wrap: wrap; opacity: 0; transform: translateY(24px); animation: rise 900ms var(--ease-out-expo) 450ms forwards; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 1rem 2rem;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.05rem; letter-spacing: 0.22em;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border: 2px solid var(--color-accent);
+  cursor: pointer;
+  transition: all 200ms var(--ease-out-expo);
+}
+.btn:hover {
+  background: var(--color-text-primary);
+  border-color: var(--color-text-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(255,59,0,0.25);
+}
+.btn-ghost { background: transparent; color: var(--color-text-primary); }
+.btn-ghost:hover { background: var(--color-accent); color: var(--color-bg); border-color: var(--color-accent); }
+
+.hero-meta {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  opacity: 0; transform: translateY(24px);
+  animation: rise 900ms var(--ease-out-expo) 600ms forwards;
+}
+@media (max-width: 700px) { .hero-meta { grid-template-columns: repeat(2, 1fr); } }
+.hero-meta .k { font-family: "Bebas Neue", sans-serif; font-size: 2.5rem; color: var(--color-accent); }
+.hero-meta .v { font-size: 0.85rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.15em; }
+
+@keyframes rise { to { opacity: 1; transform: translateY(0); } }
+
+/* ==================== SECTIONS ==================== */
+section { padding: var(--space-xl) 0; position: relative; }
+.section-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-md);
+}
+.section-head h2 {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  text-transform: uppercase;
+}
+.section-head .num {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1rem;
+  color: var(--color-accent);
+  letter-spacing: 0.3em;
+}
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 600ms var(--ease-out-expo), transform 600ms var(--ease-out-expo); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ==================== SERVICES ==================== */
+.svc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border: 1px solid var(--color-border); }
+@media (max-width: 700px) { .svc-grid { grid-template-columns: 1fr; } }
+.svc {
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  margin: -1px 0 0 -1px;
+  position: relative;
+  transition: background var(--duration-base);
+  cursor: pointer;
+}
+.svc:hover { background: var(--color-surface); }
+.svc:hover .svc-num { color: var(--color-accent); }
+.svc-num {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 0.9rem; color: var(--color-text-muted);
+  letter-spacing: 0.3em;
+  transition: color var(--duration-base);
+}
+.svc h3 {
+  font-size: 2rem; text-transform: uppercase;
+  margin: 0.5rem 0;
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: var(--space-sm);
+}
+.svc h3 .price { color: var(--color-accent); font-size: 1.6rem; }
+.svc p { color: var(--color-text-secondary); font-size: 1rem; }
+.svc .dur { display: inline-block; margin-top: var(--space-sm); font-family: "Bebas Neue", sans-serif; color: var(--color-text-muted); letter-spacing: 0.2em; font-size: 0.85rem; }
+
+/* ==================== ABOUT ==================== */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg);
+  align-items: stretch;
+}
+@media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } }
+
+.about-img {
+  background:
+    linear-gradient(180deg, transparent 50%, rgba(255,59,0,0.15)),
+    repeating-linear-gradient(45deg, #1a1a1a 0 3px, #111 3px 6px);
+  border: 1px solid var(--color-border);
+  aspect-ratio: 4/5;
+  position: relative;
+  overflow: hidden;
+}
+.about-img::after {
+  content: "WYNWOOD";
+  position: absolute;
+  bottom: var(--space-md); left: var(--space-md);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 3rem; color: var(--color-accent);
+  letter-spacing: 0.15em;
+  line-height: 1;
+}
+
+.about-text h2 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  text-transform: uppercase;
+  margin-bottom: var(--space-md);
+}
+.about-text h2 .accent { color: var(--color-accent); }
+.about-text p { font-size: var(--text-md); color: var(--color-text-secondary); margin-bottom: var(--space-md); }
+.about-text .quote {
+  border-left: 4px solid var(--color-accent);
+  padding-left: var(--space-md);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  color: var(--color-text-primary);
+  margin: var(--space-md) 0;
+}
+
+/* ==================== TEAM ==================== */
+.team-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md);
+}
+@media (max-width: 800px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px) { .team-grid { grid-template-columns: 1fr; } }
+.barber {
+  border: 1px solid var(--color-border);
+  padding: 0;
+  background: var(--color-surface);
+  transition: transform var(--duration-base) var(--ease-out-expo);
+  cursor: pointer;
+}
+.barber:hover { transform: translateY(-4px); border-color: var(--color-accent); }
+.barber .face {
+  aspect-ratio: 1/1;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(255,59,0,0.15), transparent 60%),
+    repeating-linear-gradient(135deg, #181818 0 4px, #111 4px 8px);
+  border-bottom: 1px solid var(--color-border);
+}
+.barber .info { padding: var(--space-md); }
+.barber h4 { font-size: 1.6rem; text-transform: uppercase; }
+.barber .role { font-family: "Bebas Neue", sans-serif; letter-spacing: 0.25em; font-size: 0.85rem; color: var(--color-accent); text-transform: uppercase; }
+.barber .ig { color: var(--color-text-muted); font-size: 0.9rem; margin-top: 0.5rem; }
+
+/* ==================== GALLERY ==================== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 200px;
+  gap: 0.5rem;
+}
+@media (max-width: 700px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+.gimg {
+  background: linear-gradient(135deg, #1a1a1a, #111);
+  border: 1px solid var(--color-border);
+  position: relative;
+  overflow: hidden;
+  transition: transform 400ms var(--ease-out-expo), filter 400ms var(--ease-out-expo);
+}
+.gimg:hover { transform: scale(1.03); filter: brightness(1.1); }
+.gimg.tall { grid-row: span 2; }
+.gimg.wide { grid-column: span 2; }
+.gimg::after {
+  content: attr(data-tag);
+  position: absolute; top: var(--space-sm); left: var(--space-sm);
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.2em; font-size: 0.85rem;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  padding: 0.15rem 0.6rem;
+}
+
+/* ==================== INSTAGRAM ==================== */
+.ig-row {
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.5rem;
+  margin-top: var(--space-md);
+}
+@media (max-width: 700px) { .ig-row { grid-template-columns: repeat(3, 1fr); } }
+.ig-row > div {
+  aspect-ratio: 1/1;
+  background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+  border: 1px solid var(--color-border);
+  transition: filter var(--duration-base);
+}
+.ig-row > div:hover { filter: brightness(1.15); }
+
+/* ==================== BOOKING ==================== */
+.book-band {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  padding: var(--space-xl) 0;
+  text-align: center;
+}
+.book-band h2 {
+  font-size: clamp(3rem, 9vw, 7rem);
+  text-transform: uppercase;
+  margin-bottom: var(--space-md);
+}
+.book-band p { font-size: var(--text-md); max-width: 50ch; margin: 0 auto var(--space-lg); }
+.book-band .btn {
+  background: var(--color-bg); border-color: var(--color-bg); color: var(--color-accent);
+}
+.book-band .btn:hover { background: var(--color-text-primary); border-color: var(--color-text-primary); color: var(--color-bg); }
+
+/* ==================== MAP ==================== */
+.map-wrap {
+  height: 420px;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,59,0,0.1), transparent 60%),
+    repeating-linear-gradient(0deg, transparent 0 39px, rgba(255,255,255,0.06) 40px),
+    repeating-linear-gradient(90deg, transparent 0 39px, rgba(255,255,255,0.06) 40px),
+    var(--color-surface);
+  position: relative;
+}
+.map-pin {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -100%);
+  width: 18px; height: 18px;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 8px rgba(255,59,0,0.25);
+}
+.map-card {
+  position: absolute; bottom: var(--space-md); left: var(--space-md);
+  background: var(--color-bg);
+  border: 2px solid var(--color-accent);
+  padding: var(--space-md);
+  max-width: 300px;
+}
+.map-card strong { display: block; font-family: "Bebas Neue", sans-serif; font-size: 1.5rem; letter-spacing: 0.1em; }
+
+/* ==================== CONTACT ==================== */
+.contact-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg);
+}
+@media (max-width: 700px) { .contact-grid { grid-template-columns: 1fr; } }
+.contact-block h4 {
+  font-size: 1.4rem; text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+  letter-spacing: 0.1em;
+}
+.contact-block ul { list-style: none; }
+.contact-block li {
+  display: flex; justify-content: space-between;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.95rem;
+}
+
+/* ==================== FOOTER ==================== */
+footer.foot {
+  background: var(--color-surface);
+  padding: var(--space-md) 0;
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+/* ==================== MODAL ==================== */
+.modal-back {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.92);
+  display: none; align-items: center; justify-content: center;
+  z-index: 200; padding: var(--space-md);
+}
+.modal-back.open { display: flex; }
+.modal {
+  background: var(--color-bg);
+  border: 2px solid var(--color-accent);
+  max-width: 720px; width: 100%;
+  padding: var(--space-lg);
+  position: relative;
+}
+.modal h3 { font-size: 2.5rem; text-transform: uppercase; margin-bottom: var(--space-sm); }
+.modal-close {
+  position: absolute; top: var(--space-sm); right: var(--space-sm);
+  background: var(--color-accent); color: var(--color-bg);
+  border: 0; width: 40px; height: 40px;
+  font-family: "Bebas Neue", sans-serif; font-size: 1.5rem;
+  cursor: pointer;
+}
+.modal .placeholder {
+  height: 320px;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px dashed var(--color-border);
+  color: var(--color-text-muted);
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>book</span><span>★</span><span>walk in til 9</span><span>★</span><span>wynwood</span><span>★</span><span>blade &amp; bro</span><span>★</span><span>fall '25 drop</span><span>★</span>
+    <span>book</span><span>★</span><span>walk in til 9</span><span>★</span><span>wynwood</span><span>★</span><span>blade &amp; bro</span><span>★</span><span>fall '25 drop</span><span>★</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top"><span class="dot"></span>BLADE &amp; BRO</a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services">cuts</a></li>
+        <li><a href="#about">shop</a></li>
+        <li><a href="#team">barbers</a></li>
+        <li><a href="#gallery">lookbook</a></li>
+        <li><a href="#contact">locations</a></li>
+        <li><a href="#book" class="nav-cta" data-book>book</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-eyebrow">wynwood / 2nd ave / open late</div>
+    <h1>FADE <span class="slash">/</span><br><span class="stroke">SHAVE</span><br><span class="slash">/</span> SHOP</h1>
+    <p class="hero-sub">walk in. sit down. cuts only.</p>
+    <div class="hero-ctas">
+      <a href="#book" class="btn" data-book>book</a>
+      <a href="#services" class="btn btn-ghost">cuts</a>
+    </div>
+    <div class="hero-meta">
+      <div><div class="k">9PM</div><div class="v">last walk-in</div></div>
+      <div><div class="k">11PM</div><div class="v">fri / sat close</div></div>
+      <div><div class="k">$45</div><div class="v">the wynwood</div></div>
+      <div><div class="k">5★</div><div class="v">412 reviews</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>cuts</h2>
+      <span class="num">01 / menu</span>
+    </div>
+    <div class="svc-grid reveal">
+      <article class="svc">
+        <div class="svc-num">001</div>
+        <h3>The Wynwood <span class="price">$45</span></h3>
+        <p>fade. skin to high — pick one. hot towel finish.</p>
+        <span class="dur">45 min</span>
+      </article>
+      <article class="svc">
+        <div class="svc-num">002</div>
+        <h3>The 2nd Ave <span class="price">$70</span></h3>
+        <p>cut up top. beard lined. neck shave.</p>
+        <span class="dur">60 min</span>
+      </article>
+      <article class="svc">
+        <div class="svc-num">003</div>
+        <h3>The Lineup <span class="price">$35</span></h3>
+        <p>beard only. hot towel. razor line.</p>
+        <span class="dur">30 min</span>
+      </article>
+      <article class="svc">
+        <div class="svc-num">004</div>
+        <h3>The Design <span class="price">$15</span></h3>
+        <p>line. part. design. add to any cut.</p>
+        <span class="dur">+15 min</span>
+      </article>
+      <article class="svc">
+        <div class="svc-num">005</div>
+        <h3>The Late Drop <span class="price">$95</span></h3>
+        <p>after 9pm. private chair. bring three.</p>
+        <span class="dur">90 min</span>
+      </article>
+      <article class="svc">
+        <div class="svc-num">006</div>
+        <h3>The Little Bro <span class="price">$30</span></h3>
+        <p>under 12. stool. sticker.</p>
+        <span class="dur">30 min</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img reveal" role="img" aria-label="Shop interior"></div>
+      <div class="about-text reveal">
+        <h2>ONE CHAIR <span class="accent">/</span> 2019.</h2>
+        <p>dre. one barber. one phone. walls a block away. rent almost reasonable. eleven clients month one.</p>
+        <p>now: six chairs. music after 9 three nights a week. saturday list you text dre direct to get on.</p>
+        <p class="quote">"NOT A SALON. NOT A CHAIN. A BARBERSHOP."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>the bench</h2>
+      <span class="num">02 / barbers</span>
+    </div>
+    <div class="team-grid reveal">
+      <article class="barber">
+        <div class="face"></div>
+        <div class="info">
+          <div class="role">owner / chair 01</div>
+          <h4>Dre Castillo</h4>
+          <div class="ig">@dre.cuts &nbsp;·&nbsp; 47k</div>
+        </div>
+      </article>
+      <article class="barber">
+        <div class="face"></div>
+        <div class="info">
+          <div class="role">senior / chair 02</div>
+          <h4>Marquis Lee</h4>
+          <div class="ig">@marquis.fadehouse &nbsp;·&nbsp; 22k</div>
+        </div>
+      </article>
+      <article class="barber">
+        <div class="face"></div>
+        <div class="info">
+          <div class="role">barber / chair 03</div>
+          <h4>Lo Patel</h4>
+          <div class="ig">@lopatel &nbsp;·&nbsp; 9k</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>lookbook</h2>
+      <span class="num">03 / fall '25</span>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gimg tall" data-tag="mid"></div>
+      <div class="gimg" data-tag="line"></div>
+      <div class="gimg" data-tag="beard"></div>
+      <div class="gimg wide" data-tag="late drop"></div>
+      <div class="gimg" data-tag="skin"></div>
+      <div class="gimg" data-tag="design"></div>
+      <div class="gimg" data-tag="lil bro"></div>
+      <div class="gimg" data-tag="color"></div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section style="padding-top:0">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>@bladebro</h2>
+      <span class="num">04 / ig</span>
+    </div>
+    <div class="ig-row reveal">
+      <div></div><div></div><div></div><div></div><div></div><div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="book-band" id="book">
+  <div class="container">
+    <h2>book.</h2>
+    <p>booksy. first time: try The Wynwood. see how we work. go up from there.</p>
+    <a href="#" class="btn" data-book>open booking</a>
+  </div>
+</section>
+
+<!-- MAP -->
+<div class="map-wrap" aria-label="Map placeholder">
+  <div class="map-pin"></div>
+  <div class="map-card">
+    <strong>BLADE &amp; BRO</strong>
+    <span>2417 NW 2nd Ave<br>Miami, FL 33127</span>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>shop locations</h2>
+      <span class="num">05 / contact</span>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="contact-block">
+        <h4>shop</h4>
+        <p>2417 NW 2nd Ave<br>Miami, FL 33127</p>
+        <p style="margin-top:var(--space-sm)"><a href="tel:+13055550411" style="color:var(--color-accent)">(305) 555-0411</a></p>
+        <p><a href="mailto:hi@bladebro.miami" style="color:var(--color-accent)">hi@bladebro.miami</a></p>
+      </div>
+      <div class="contact-block">
+        <h4>hours</h4>
+        <ul>
+          <li><span>mon</span><span>closed</span></li>
+          <li><span>tue – thu</span><span>11 – 9</span></li>
+          <li><span>fri – sat</span><span>11 – 11</span></li>
+          <li><span>sun</span><span>12 – 6</span></li>
+        </ul>
+      </div>
+      <div class="contact-block">
+        <h4>socials</h4>
+        <ul>
+          <li><span>ig</span><span>@bladebro</span></li>
+          <li><span>tiktok</span><span>@bladebro</span></li>
+          <li><span>youtube</span><span>blade &amp; bro</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="container">© blade &amp; bro / wynwood / since '19</div>
+</footer>
+
+<!-- BOOKING MODAL -->
+<div class="modal-back" id="bookModal" role="dialog" aria-modal="true">
+  <div class="modal">
+    <button class="modal-close" onclick="closeBook()" aria-label="Close">×</button>
+    <h3>book</h3>
+    <p style="color:var(--color-text-secondary); margin-bottom:var(--space-md)">booksy. first time — pick "first visit" so we leave extra time.</p>
+    <div class="placeholder">booksy widget loads here</div>
+  </div>
+</div>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+let cx = 0, cy = 0, tx = 0, ty = 0;
+window.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
+function loop() {
+  cx += (tx - cx) * 0.22;
+  cy += (ty - cy) * 0.22;
+  cursor.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
+  requestAnimationFrame(loop);
+}
+loop();
+document.querySelectorAll('a, button, .svc, .barber, .gimg').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+});
+document.addEventListener('mousedown', () => cursor.classList.add('click'));
+document.addEventListener('mouseup', () => cursor.classList.remove('click'));
+
+// Modal
+const modal = document.getElementById('bookModal');
+document.querySelectorAll('[data-book]').forEach(el => el.addEventListener('click', e => { e.preventDefault(); modal.classList.add('open'); }));
+function closeBook() { modal.classList.remove('open'); }
+modal.addEventListener('click', e => { if (e.target === modal) closeBook(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBook(); });
+
+// Reveals
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('in'), i * 80);
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

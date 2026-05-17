@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ============================================================
+     CONFIG — All variable content lives here.
+     Swap these values per client intake.json.
+     ============================================================ -->
+<script id="config">
+  /* eslint-disable */
+  /* prettier-ignore */
+  // CONFIG (read by inline render below; values mirrored into HTML)
+  // SHOP_NAME: "The Whitfield"
+  // OWNER_FIRST_NAME: "Henry"
+  // NEIGHBORHOOD: "Upper East Side"
+  // CITY: "New York"
+  // STATE: "NY"
+  // ZIP: "10021"
+  // ADDRESS: "162 East 73rd Street"
+  // PHONE: "(212) 555-0182"
+  // EMAIL: "appointments@thewhitfield.nyc"
+  // PRICE_RANGE: "$$$"
+  // BOOKING_PLATFORM: "square"
+  // BOOKING_URL: "https://squareup.com/appointments/book/example"
+  //
+  // SECTIONS = {
+  //   nav: true, hero: true, services: true, about: true,
+  //   gallery: true, team: false, testimonials: true,
+  //   booking: true, google_map: true, instagram_feed: false,
+  //   contact: true, footer: true
+  // }
+</script>
+
+<title>The Whitfield — The Gentleman's Barber, Upper East Side</title>
+<meta name="description" content="An appointed gentleman's barber on 73rd Street since 1994. The Art of the Perfect Shave, kept the British way. Your barber will see you now.">
+<meta name="geo.region" content="US-NY">
+<meta name="geo.placename" content="New York">
+<meta name="theme-color" content="#0A0A0A">
+
+<meta property="og:title" content="The Whitfield — The Gentleman's Barber">
+<meta property="og:description" content="An appointed gentleman's barber on the Upper East Side. The Art of the Perfect Shave.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og-image.jpg">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0A0A'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='20' fill='%23C9A84C' text-anchor='middle' font-style='italic'%3EW%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  "name": "The Whitfield",
+  "description": "Upper East Side barbershop offering hot-towel shaves and editorial-grade haircuts since 1994.",
+  "url": "https://thewhitfield.nyc",
+  "telephone": "(212) 555-0182",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "162 East 73rd Street",
+    "addressLocality": "New York",
+    "addressRegion": "NY",
+    "postalCode": "10021",
+    "addressCountry": "US"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "19:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "18:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:00", "closes": "16:00" }
+  ],
+  "priceRange": "$$$",
+  "image": "og-image.jpg"
+}
+</script>
+
+<style>
+:root {
+  /* Color Tokens */
+  --color-bg: #0A0A0A;
+  --color-surface: #141414;
+  --color-border: rgba(201, 168, 76, 0.18);
+  --color-text-primary: #F5F0E8;
+  --color-text-secondary: #C9C2B5;
+  --color-text-muted: #7A746A;
+  --color-accent: #C9A84C;
+  --color-accent-hover: #E0BC58;
+  --color-cream: #F5F0E8;
+
+  /* Type Scale */
+  --text-xs: 0.64rem;
+  --text-sm: 0.8rem;
+  --text-base: 1rem;
+  --text-md: 1.25rem;
+  --text-lg: 1.563rem;
+  --text-xl: 1.953rem;
+  --text-2xl: 2.441rem;
+  --text-3xl: 3.052rem;
+  --text-4xl: 3.815rem;
+  --text-display: clamp(3rem, 8vw, 6rem);
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
+  --space-2xl: 16rem;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 600ms;
+  --duration-enter: 900ms;
+
+  /* Layout */
+  --container-max: 1280px;
+  --container-narrow: 760px;
+  --nav-height: 72px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.15rem;
+  line-height: 1.65;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--color-accent); color: var(--color-bg); }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-accent); }
+
+h1, h2, h3, h4 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--space-md); }
+.narrow { max-width: var(--container-narrow); margin: 0 auto; padding: 0 var(--space-md); }
+
+/* ==================== NAV ==================== */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-height);
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 100;
+  opacity: 0;
+  transform: translateY(-8px);
+  animation: navIn 300ms var(--ease-out-expo) forwards;
+}
+@keyframes navIn { to { opacity: 1; transform: translateY(0); } }
+
+.nav-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--color-cream);
+  letter-spacing: 0.02em;
+}
+.brand .mark { color: var(--color-accent); }
+
+.nav-links {
+  display: flex;
+  gap: var(--space-md);
+  list-style: none;
+  align-items: center;
+}
+.nav-links a {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  position: relative;
+  padding: 0.25rem 0;
+  transition: color var(--duration-base) var(--ease-out-expo);
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -2px;
+  height: 1px; width: 0;
+  background: var(--color-accent);
+  transition: width var(--duration-base) var(--ease-out-expo);
+}
+.nav-links a:hover { color: var(--color-cream); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent) !important;
+  padding: 0.55rem 1.25rem !important;
+  letter-spacing: 0.18em !important;
+  transition: all 200ms var(--ease-out-expo);
+}
+.nav-cta:hover {
+  background: var(--color-accent);
+  color: var(--color-bg) !important;
+  transform: translateY(-2px);
+}
+.nav-cta::after { display: none; }
+
+.nav-toggle { display: none; background: none; border: 0; color: var(--color-cream); cursor: pointer; }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
+  .nav-links.open {
+    display: flex;
+    position: absolute;
+    top: var(--nav-height); left: 0; right: 0;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    flex-direction: column;
+    padding: var(--space-md);
+    align-items: flex-start;
+  }
+}
+
+/* ==================== HERO ==================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: calc(var(--nav-height) + var(--space-lg)) 0 var(--space-lg);
+  background:
+    radial-gradient(ellipse at 70% 30%, rgba(201,168,76,0.06), transparent 60%),
+    var(--color-bg);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+}
+
+.hero-eyebrow {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--color-accent);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-md);
+  opacity: 0;
+  animation: rise 900ms var(--ease-out-expo) 100ms forwards;
+}
+
+.hero h1 {
+  font-size: var(--text-display);
+  font-weight: 500;
+  color: var(--color-cream);
+  margin-bottom: var(--space-md);
+  opacity: 0;
+  transform: translateY(24px);
+  animation: rise 900ms var(--ease-out-expo) 150ms forwards;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--color-accent);
+  font-weight: 400;
+}
+
+.hero-sub {
+  font-size: var(--text-md);
+  color: var(--color-text-secondary);
+  max-width: 38ch;
+  margin-bottom: var(--space-lg);
+  opacity: 0;
+  transform: translateY(24px);
+  animation: rise 900ms var(--ease-out-expo) 300ms forwards;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(24px);
+  animation: rise 900ms var(--ease-out-expo) 450ms forwards;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 2rem;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-bg);
+  cursor: pointer;
+  transition: all 200ms var(--ease-out-expo);
+}
+.btn:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(201,168,76,0.2);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--color-accent);
+}
+.btn-ghost:hover {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.hero-card {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background:
+    linear-gradient(160deg, rgba(201,168,76,0.18), transparent 55%),
+    var(--color-surface);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: flex-end;
+  padding: var(--space-md);
+  opacity: 0;
+  transform: scale(1.04);
+  animation: heroImg 1200ms var(--ease-out-expo) 250ms forwards;
+}
+.hero-card::before {
+  content: "";
+  position: absolute;
+  inset: var(--space-md);
+  border: 1px solid var(--color-border);
+}
+.hero-card .meta {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.hero-card .crest {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: clamp(5rem, 14vw, 9rem);
+  color: var(--color-accent);
+  opacity: 0.9;
+}
+.hero-card .crest span {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.5em;
+  text-align: center;
+  margin-top: 0.5rem;
+  color: var(--color-text-muted);
+  font-style: normal;
+  font-family: "Cormorant Garamond", serif;
+}
+
+@keyframes rise { to { opacity: 1; transform: translateY(0); } }
+@keyframes heroImg { to { opacity: 1; transform: scale(1); } }
+
+/* ==================== SECTION HEADINGS ==================== */
+section { padding: var(--space-xl) 0; }
+
+.section-head {
+  margin-bottom: var(--space-lg);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+}
+.section-head .num {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--color-accent);
+  letter-spacing: 0.3em;
+}
+.section-head h2 {
+  font-size: var(--text-2xl);
+  font-weight: 500;
+  color: var(--color-cream);
+}
+.section-head h2 em { color: var(--color-accent); font-style: italic; font-weight: 400; }
+
+/* Reveal */
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 600ms var(--ease-out-expo), transform 600ms var(--ease-out-expo); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ==================== SERVICES ==================== */
+.services-list { display: grid; grid-template-columns: 1fr; }
+.service {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+  border-top: 1px solid var(--color-border);
+  position: relative;
+  cursor: pointer;
+  transition: padding-left var(--duration-base) var(--ease-out-expo);
+}
+.service::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 0;
+  background: var(--color-accent);
+  transition: width var(--duration-base) var(--ease-out-expo);
+}
+.service:hover { padding-left: var(--space-md); }
+.service:hover::before { width: 3px; }
+.service:last-child { border-bottom: 1px solid var(--color-border); }
+
+.service .svc-num {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.2em;
+}
+.service .svc-body h3 {
+  font-size: var(--text-lg);
+  color: var(--color-cream);
+  margin-bottom: 0.3rem;
+}
+.service .svc-body p { color: var(--color-text-secondary); font-size: 1.05rem; }
+.service .svc-meta {
+  text-align: right;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+.service .svc-meta small {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-style: normal;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 600px) {
+  .service { grid-template-columns: auto 1fr; }
+  .service .svc-meta { grid-column: 1 / -1; text-align: left; padding-left: 2rem; }
+}
+
+/* ==================== ABOUT ==================== */
+.about {
+  background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-surface) 100%);
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  align-items: center;
+}
+@media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } }
+
+.about-text p {
+  font-size: var(--text-md);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+}
+.about-text p:first-of-type::first-letter {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  color: var(--color-accent);
+  font-size: 4rem;
+  float: left;
+  line-height: 0.9;
+  margin-right: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-md);
+}
+.stat .n {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: var(--text-2xl);
+  color: var(--color-accent);
+}
+.stat .l {
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.about-portrait {
+  aspect-ratio: 3 / 4;
+  background:
+    linear-gradient(160deg, rgba(201,168,76,0.12), transparent 60%),
+    repeating-linear-gradient(45deg, var(--color-surface) 0 4px, #181818 4px 8px);
+  border: 1px solid var(--color-border);
+  position: relative;
+}
+.about-portrait::after {
+  content: "Est. 1994";
+  position: absolute;
+  bottom: var(--space-md);
+  left: var(--space-md);
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  color: var(--color-accent);
+  font-size: 1.5rem;
+}
+
+/* ==================== GALLERY ==================== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+}
+@media (max-width: 700px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+.gallery-item {
+  aspect-ratio: 3 / 4;
+  background:
+    linear-gradient(160deg, rgba(201,168,76,0.1), transparent 60%),
+    var(--color-surface);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  position: relative;
+  transition: transform 400ms var(--ease-out-expo), filter 400ms var(--ease-out-expo);
+  cursor: pointer;
+}
+.gallery-item:hover { transform: scale(1.02); filter: brightness(1.1); }
+.gallery-item.wide { grid-column: span 2; aspect-ratio: 16 / 10; }
+.gallery-item::after {
+  content: attr(data-caption);
+  position: absolute;
+  bottom: var(--space-sm); left: var(--space-sm);
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ==================== TESTIMONIALS ==================== */
+.testimonials {
+  background: var(--color-surface);
+}
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+@media (max-width: 700px) { .testimonial-grid { grid-template-columns: 1fr; } }
+.testimonial {
+  padding: var(--space-md);
+  border-left: 1px solid var(--color-accent);
+}
+.testimonial blockquote {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: var(--text-md);
+  color: var(--color-cream);
+  margin-bottom: var(--space-sm);
+  line-height: 1.4;
+}
+.testimonial cite {
+  font-style: normal;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* ==================== BOOKING + MAP ==================== */
+.booking-cta {
+  text-align: center;
+  padding: var(--space-xl) 0;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+.booking-cta h2 {
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-md);
+  color: var(--color-cream);
+}
+.booking-cta h2 em { color: var(--color-accent); font-style: italic; }
+.booking-cta p { color: var(--color-text-secondary); max-width: 50ch; margin: 0 auto var(--space-lg); font-size: var(--text-md); }
+
+.map-wrap {
+  height: 420px;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(201,168,76,0.08), transparent 60%),
+    repeating-linear-gradient(0deg, transparent 0 39px, rgba(201,168,76,0.08) 40px),
+    repeating-linear-gradient(90deg, transparent 0 39px, rgba(201,168,76,0.08) 40px),
+    var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+}
+.map-pin {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -100%);
+  width: 16px; height: 16px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 8px rgba(201,168,76,0.2), 0 0 0 18px rgba(201,168,76,0.08);
+}
+.map-card {
+  position: absolute;
+  bottom: var(--space-md);
+  left: var(--space-md);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  padding: var(--space-md);
+  max-width: 320px;
+}
+.map-card strong { display: block; font-family: "Playfair Display", serif; font-size: 1.2rem; color: var(--color-cream); margin-bottom: 0.4rem; }
+.map-card span { color: var(--color-text-secondary); font-size: 0.95rem; }
+
+/* ==================== CONTACT / FOOTER ==================== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+@media (max-width: 700px) { .contact-grid { grid-template-columns: 1fr; } }
+.contact-block h4 {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--color-accent);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+}
+.contact-block p, .contact-block li {
+  color: var(--color-text-secondary);
+  font-size: 1.05rem;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+}
+.contact-block .day { color: var(--color-text-muted); }
+
+footer.foot {
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-md) 0;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+}
+footer.foot .brand { font-size: 1.5rem; margin-bottom: 0.5rem; display: block; }
+
+/* ==================== BOOKING MODAL ==================== */
+.modal-back {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: var(--space-md);
+}
+.modal-back.open { display: flex; }
+.modal {
+  background: var(--color-bg);
+  border: 1px solid var(--color-accent);
+  width: 100%;
+  max-width: 720px;
+  position: relative;
+  padding: var(--space-lg);
+}
+.modal h3 { font-family: "Playfair Display", serif; font-size: var(--text-xl); color: var(--color-cream); margin-bottom: var(--space-sm); }
+.modal p { color: var(--color-text-secondary); margin-bottom: var(--space-md); }
+.modal-close {
+  position: absolute;
+  top: var(--space-sm); right: var(--space-sm);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-accent);
+  width: 36px; height: 36px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+.modal iframe {
+  width: 100%;
+  height: 480px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+.modal .placeholder {
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed var(--color-border);
+  color: var(--color-text-muted);
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand"><span class="mark">W</span>&nbsp;The Whitfield</a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services">The Cut</a></li>
+        <li><a href="#services">The Shave</a></li>
+        <li><a href="#about">The House</a></li>
+        <li><a href="#gallery">Heritage</a></li>
+        <li><a href="#contact">Visit</a></li>
+        <li><a href="#book" class="nav-cta" data-book>Appointments</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open')">≡</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="container hero-grid">
+    <div>
+      <div class="hero-eyebrow">An Appointed Gentleman's Barber · Est. 1994</div>
+      <h1>Your barber<br>will see you <em>now</em>.</h1>
+      <p class="hero-sub">The Art of the Perfect Shave, kept the British way, on the corner of 73rd &amp; Lexington since 1994.</p>
+      <div class="hero-ctas">
+        <a href="#book" class="btn" data-book>Make an Appointment</a>
+        <a href="#services" class="btn btn-ghost">The Services</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="crest">W<span>The Whitfield</span></div>
+      <div class="meta">
+        <span>No. 162</span>
+        <span>NYC</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="num">i.</span>
+      <h2>The <em>Services</em></h2>
+    </div>
+    <div class="services-list reveal">
+      <article class="service">
+        <div class="svc-num">01</div>
+        <div class="svc-body">
+          <h3>The Cut</h3>
+          <p>Consultation, shampoo, scissor work, finished at the basin. Appointed gentlemen only.</p>
+        </div>
+        <div class="svc-meta">$85<small>60 min</small></div>
+      </article>
+      <article class="service">
+        <div class="svc-num">02</div>
+        <div class="svc-body">
+          <h3>The Wet Shave</h3>
+          <p>The Four Elements observed: prepare, lather, shave, restore. Badger brush, straight razor.</p>
+        </div>
+        <div class="svc-meta">$70<small>45 min</small></div>
+      </article>
+      <article class="service">
+        <div class="svc-num">03</div>
+        <div class="svc-body">
+          <h3>The Cut &amp; Wet Shave</h3>
+          <p>The full ninety. The most-asked-for appointment in the diary.</p>
+        </div>
+        <div class="svc-meta">$140<small>90 min</small></div>
+      </article>
+      <article class="service">
+        <div class="svc-num">04</div>
+        <div class="svc-body">
+          <h3>The Beard</h3>
+          <p>Shaped with shears, lined with the razor, restored with house balm.</p>
+        </div>
+        <div class="svc-meta">$45<small>30 min</small></div>
+      </article>
+      <article class="service">
+        <div class="svc-num">05</div>
+        <div class="svc-body">
+          <h3>Father &amp; Son</h3>
+          <p>Two chairs, side by side. A first appointment for the boy.</p>
+        </div>
+        <div class="svc-meta">$130<small>60 min</small></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container about-grid">
+    <div class="about-text reveal">
+      <div class="section-head" style="margin-bottom:var(--space-md)">
+        <span class="num">ii.</span>
+        <h2>The <em>House</em></h2>
+      </div>
+      <p>Henry Whitfield was appointed to a Mayfair barber at nineteen and to a hotel on Madison at twenty-six. He opened on 73rd Street in 1994 with two chairs, a basin from a closed Madison Avenue hotel, and the same straight razor he was given on his last day in London.</p>
+      <p>Thirty years on, the chair by the window is kept Saturday mornings for Mr. Pellegrino. The Sinatra is the same. The shave is the same. The discerning gentleman is welcome.</p>
+      <div class="about-stats">
+        <div class="stat"><div class="n">30</div><div class="l">Years on 73rd</div></div>
+        <div class="stat"><div class="n">4</div><div class="l">Master barbers</div></div>
+        <div class="stat"><div class="n">2</div><div class="l">Chairs &middot; Two basins</div></div>
+        <div class="stat"><div class="n">1</div><div class="l">Razor since '94</div></div>
+      </div>
+    </div>
+    <div class="about-portrait reveal"></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="num">iii.</span>
+      <h2>The <em>Portfolio</em></h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item wide" data-caption="Saturday, 10:14am"></div>
+      <div class="gallery-item" data-caption="The basin"></div>
+      <div class="gallery-item" data-caption="House oil"></div>
+      <div class="gallery-item" data-caption="Chair 03"></div>
+      <div class="gallery-item" data-caption="Side part"></div>
+      <div class="gallery-item" data-caption="The window"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="num">iv.</span>
+      <h2>What the <em>Regulars</em> Say</h2>
+    </div>
+    <div class="testimonial-grid reveal">
+      <article class="testimonial">
+        <blockquote>"The kind of barber who knows your appointment before you've taken your coat off."</blockquote>
+        <cite>— Vincent P., 73rd Street</cite>
+      </article>
+      <article class="testimonial">
+        <blockquote>"The wet shave is the closest thing Manhattan has to actual quiet. Less irritation. More comfort. As it should be."</blockquote>
+        <cite>— Daniel K., Carnegie Hill</cite>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking-cta" id="book">
+  <div class="narrow">
+    <h2>Your <em>appointment</em> awaits.</h2>
+    <p>The diary opens seven days in advance. Walk-ins received before noon on weekdays — there is usually a barber free.</p>
+    <a href="#book" class="btn" data-book>Make an Appointment</a>
+  </div>
+</section>
+
+<!-- MAP -->
+<div class="map-wrap" aria-label="Map placeholder — swap with Google Maps embed iframe">
+  <div class="map-pin"></div>
+  <div class="map-card">
+    <strong>The Whitfield</strong>
+    <span>162 East 73rd Street<br>New York, NY 10021</span>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="num">v.</span>
+      <h2>Find <em>Us</em></h2>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="contact-block">
+        <h4>The Shop</h4>
+        <p style="display:block">162 East 73rd Street<br>New York, NY 10021</p>
+        <p style="display:block; margin-top:var(--space-sm)"><a href="tel:+12125550182" style="color:var(--color-accent)">(212) 555-0182</a></p>
+        <p style="display:block"><a href="mailto:appointments@thewhitfield.nyc" style="color:var(--color-accent)">appointments@thewhitfield.nyc</a></p>
+      </div>
+      <div class="contact-block">
+        <h4>Hours</h4>
+        <ul style="padding:0">
+          <li><span class="day">Mon</span><span>Closed</span></li>
+          <li><span class="day">Tue–Fri</span><span>9 – 7</span></li>
+          <li><span class="day">Sat</span><span>8 – 6</span></li>
+          <li><span class="day">Sun</span><span>10 – 4</span></li>
+        </ul>
+      </div>
+      <div class="contact-block">
+        <h4>House Notes</h4>
+        <p style="display:block">Appointments preferred. Discerning gentlemen received in tweed, in linen, or as they are.</p>
+        <p style="display:block; margin-top:var(--space-sm)">Six steps up from the sidewalk — black door, brass knocker.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="container">
+    <span class="brand"><span class="mark">W</span>&nbsp;The Whitfield</span>
+    <div>An appointed gentleman's barber — Upper East Side since 1994.</div>
+  </div>
+</footer>
+
+<!-- BOOKING MODAL -->
+<div class="modal-back" id="bookModal" role="dialog" aria-modal="true" aria-labelledby="bookTitle">
+  <div class="modal">
+    <button class="modal-close" aria-label="Close" onclick="closeBook()">×</button>
+    <h3 id="bookTitle">Make an Appointment</h3>
+    <p>The diary is kept in Square Appointments. New gentlemen, please leave a note for your preferred barber.</p>
+    <!-- Live: replace .placeholder with <iframe src="{{BOOKING_URL}}" title="Book"></iframe> -->
+    <div class="placeholder">Square Appointments embed loads here</div>
+  </div>
+</div>
+
+<script>
+// Booking modal
+const modal = document.getElementById('bookModal');
+document.querySelectorAll('[data-book]').forEach(el => el.addEventListener('click', e => {
+  e.preventDefault(); modal.classList.add('open');
+}));
+function closeBook() { modal.classList.remove('open'); }
+modal.addEventListener('click', e => { if (e.target === modal) closeBook(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBook(); });
+
+// Intersection Observer for scroll reveals (threshold 0.15 per spec)
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      // 80ms stagger for grid items if multiple revealed at once
+      setTimeout(() => entry.target.classList.add('in'), i * 80);
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
